@@ -1,0 +1,12 @@
+INDEX VERSION 1.134+C:\KHNURE\КПП\Java\.metadata\.plugins\org.eclipse.jdt.core
+542845662.index
+1583741430.index
+3413270776.index
+2882607215.index
+1865797976.index
+1506964599.index
+3326288097.index
+1599643999.index
+2034141139.index
+297413525.index
+1551561776.index
