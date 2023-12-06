@@ -21,6 +21,8 @@
                 <th>Patronymic</th>
                 <th>Phone Number</th>
                 <th>E-mail</th>
+                <th>UPD</th>
+                <th>DEL</th>
             </tr>
             </thead>
             <tbody>
@@ -30,8 +32,12 @@
                 <td th:text="${client.patronymic}"></td>
                 <td th:text="${client.phoneNumber}"></td>
                 <td th:text="${client.email}"></td>
-                <td><a class="btn btn-primary" href="/admin/update">Update</a></td>
-                <td><a class="btn btn-primary" href="/admin/delete">Delete</a></td>
+                <td><a class="btn btn-primary" th:href="@{/admin/{id}/editClient(id=${client.getId()})}">Update client</a></td>
+                <td>
+                    <form th:method="POST" th:action="@{/admin/clientDEL/{id}(id=${client.getId()})}">
+                        <input type="submit" class="btn btn-primary" value="Delete client"/>
+                    </form>
+                </td>
             </tr>
             </tbody>
         </table>

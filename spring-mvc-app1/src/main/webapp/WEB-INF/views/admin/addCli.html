@@ -3,18 +3,29 @@
 
 <head>
     <meta charset="ISO-8859-1">
-    <title>About Us</title>
+    <title>Add client</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
-    <div th:include="frags/headerUser"></div>
+    <div th:include="frags/headerAdmin"></div>
 
-    <div class="container mt-5">
-        <h2>About Us</h2>
-        <p>Welcome to FurniCraft Designs, your trusted partner in the world of quality furniture. With a legacy of 5 years, we are dedicated to providing our customers with the finest craftsmanship and innovative designs.</p>
-        <p>Explore our collection and discover the perfect pieces to complement your lifestyle.</p>
-        <p>For more information, feel free to <a href="/user/contacts">contact us</a>.</p>
+    <div class="container mt-4">
+        <h2>Add client</h2>
+        
+        <form th:action="@{/admin/orderlist}" th:method="post" th:object="${clients}">
+            <div>
+                <label for="clientSelect" class="form-label">Select Client</label>
+                <select class="form-select" id="clientSelect" name="clientId" required>
+                    <option th:each="client : ${clients}" th:value="${client.id}" th:text="${client.name} + ' ' + ${client.surname} + ' ' + ${client.patronymic}">
+                        Client Info: <span th:text="${client.name} + ' ' + ${client.surname} + ' ' + ${client.patronymic}"></span>
+                    </option>
+                </select>
+            </div>
+            <br/>
+            <button type="submit" class="btn btn-primary">Add order to client</button>
+        </form>
+         
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

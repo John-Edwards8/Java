@@ -36,9 +36,9 @@
                 <td th:text="${ol.client.patronymic}"></td>
                 <td th:text="${ol.client.phoneNumber}"></td>
                 <td th:text="${ol.client.email}"></td>
-                <td><a class="btn btn-primary" th:href="@{/admin/{id}/edit(id=${ol.order.getId()})}">Update order</a></td>
+                <td><a class="btn btn-primary" th:href="@{/admin/{orderID}/{clientID}/editOrder(orderID=${ol.order.getId()}, clientID=${ol.client.getId()})}">Update order</a></td>
                 <td>
-                    <form th:method="DELETE" th:action="@{/admin/{id}(id=${ol.order.getId()})}">
+                    <form th:method="POST" th:action="@{/admin/orderDEL/{orderID}/{clientID}(orderID=${ol.order.getId()}, clientID=${ol.client.getId()})}">
                         <input type="submit" class="btn btn-primary" value="Delete order"/>
                     </form>
                 </td>

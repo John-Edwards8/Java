@@ -9,35 +9,13 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        boolean userAuthorized = request.getSession().getAttribute("userLoggedIn") != null;
         boolean adminAuthorized = request.getSession().getAttribute("adminLoggedIn") != null;
 
-        if (!userAuthorized && !adminAuthorized) {
+        if (!adminAuthorized) {
             response.sendRedirect("/login");
             return false;
         }
-        
-        
 		
-		 if (userAuthorized && request.getRequestURI().startsWith("/admin")) {
-			 String referringPage = request.getHeader("Referer");
-			 if (referringPage != null && !referringPage.isEmpty()) {
-				 response.sendRedirect(referringPage);
-				 return false;
-			 }
-		 }
-		 
-		 //FIX: Cookie problem
-		 
-		 if (adminAuthorized && request.getRequestURI().startsWith("/user")) {
-			 String referringPage = request.getHeader("Referer");
-			 if (referringPage != null && !referringPage.isEmpty()) {
-				 response.sendRedirect(referringPage);
-				 return false;
-			 }
-		 }
-		 
-        
         return true;
     }
 }

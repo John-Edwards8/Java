@@ -10,7 +10,7 @@
         <div class="container mt-4">
             <h2>Update order</h2>
             
-            <form th:action="@{/admin/{id}(id=${order.getId()})}" th:method="PATCH" th:object="${order}">
+            <form th:method="POST" th:action="@{/admin/orderUPD/{id}(id=${order.getId()})}" th:object="${order}">
                 <div class="mb-3">
                     <label for="orderDate">Date:</label>
                     <input type="date" class="form-control" id="orderDate" th:field="${order.date}" required>

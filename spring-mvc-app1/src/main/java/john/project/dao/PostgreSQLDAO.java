@@ -4,6 +4,7 @@ import java.sql.*;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,8 @@ public class PostgreSQLDAO implements IDAO {
 	private static final String PASSWORD = "1111";
 
 	private static Connection con;
+    private HashMap<String, Order> cacheOrder;
+    private HashMap<String, Client> cacheCli;
 
     @Autowired
     public PostgreSQLDAO() {
@@ -33,6 +36,9 @@ public class PostgreSQLDAO implements IDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        
+        this.cacheOrder = new HashMap<>();
+        this.cacheCli = new HashMap<>();
 
     }
 	
@@ -59,6 +65,7 @@ public class PostgreSQLDAO implements IDAO {
 	        preparedStatement.setString(4, client.getPhoneNumber());
 	        preparedStatement.setString(5, client.getEmail());
 	        preparedStatement.setInt(6, id);
+	        preparedStatement.executeUpdate();
     	 } catch (SQLException throwables) {
              throwables.printStackTrace();
          }
@@ -74,12 +81,6 @@ public class PostgreSQLDAO implements IDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-    }
-
-    @Override
-    public Client getClientByFullName(String fullName) {
-        // Реализуйте метод получения клиента по полному имени
-        return null;
     }
 
     @Override
@@ -112,18 +113,6 @@ public class PostgreSQLDAO implements IDAO {
     }
 
     @Override
-    public void addOrderByUser(Order order) {
-    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    	try {
-	        String SQL = "INSERT INTO indent (indent_date, indent_status) VALUES('" + formatter.format(order.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()) + "', 'Pending')";
-		
-	        con.createStatement().executeUpdate(SQL);
-	    } catch (SQLException throwables) {
-	        throwables.printStackTrace();
-	    }
-    }
-    
-    @Override
     public void addOrderByAdmin(Order order) {
     	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     	try {
@@ -143,6 +132,7 @@ public class PostgreSQLDAO implements IDAO {
 	
 	        preparedStatement.setString(1, order.getStatus());
 	        preparedStatement.setInt(2, id);
+	        preparedStatement.executeUpdate();
     	 } catch (SQLException throwables) {
              throwables.printStackTrace();
          }
@@ -158,6 +148,29 @@ public class PostgreSQLDAO implements IDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+    
+    public Client getClient(int id) {
+    	Client client = null;
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM clients WHERE client_id=?");
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+            while(resultSet.next()) {
+            	client =  new Client();
+                client.setId(resultSet.getInt("client_id"));;
+                client.setName(resultSet.getString("client_first_name"));
+                client.setSurname(resultSet.getString("client_second_name"));
+                client.setPatronymic(resultSet.getString("client_patronymic"));
+                client.setPhoneNumber(resultSet.getString("client_phone_number"));
+                client.setEmail(resultSet.getString("client_email"));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return client;
     }
     
     public Order getOrder(int id) {
@@ -205,28 +218,50 @@ public class PostgreSQLDAO implements IDAO {
         return orders;
     }
 
+
     @Override
-    public void addOrderList(OrderList orderList) {
-//        String sql = "INSERT INTO order_list (client_id, order_id) VALUES (?, ?)";
-//        jdbcTemplate.update(sql, orderList.getClient().getId(), orderList.getOrder().getId());
+	public void addOrderList(Order order, int clientId) {
+		this.addOrderByAdmin(order);
+		
+		try {
+            String SQL = "INSERT INTO orderlist (orderid, clientid) VALUES ((SELECT currval(pg_get_serial_sequence('indent', 'indent_id')))," + clientId + ");";
+            con.createStatement().executeUpdate(SQL);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+	}
+
+    @Override
+    public void updateOrderList(Order order, int clientID) {
+        this.updateOrder(order.getId(), order);
+
+        try {
+        	PreparedStatement preparedStatement = con.prepareStatement("UPDATE orderlist SET orderID=?, clientID=? WHERE orderID=?;");
+            preparedStatement.setInt(1, order.getId());
+            preparedStatement.setInt(2, clientID);
+            preparedStatement.setInt(3, order.getId());
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     @Override
-    public void updateOrderList(OrderList orderList) {
-        // Реализуйте метод обновления OrderList в базе данных
+    public void deleteOrderList(int orderID, int clientID) {
+    	try {
+            PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM orderlist WHERE orderID=? AND clientID=?;");
+            preparedStatement.setInt(1, orderID);
+            preparedStatement.setInt(2, clientID);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     @Override
-    public void deleteOrderList(Client client, Order order) {
-        // Реализуйте метод удаления OrderList из базы данных
-    }
-
-    @Override
-    public OrderList getOrderList(Client client, Order order) {
-        // Реализуйте метод получения OrderList по клиенту и заказу
-        return null;
-    }
-    
     public OrderList getOrderList(int id) {
     	OrderList order = null;
         try {
@@ -252,7 +287,7 @@ public class PostgreSQLDAO implements IDAO {
     	List<OrderList> orderLists = new ArrayList<>();
 
         try {
-            String SQL = "SELECT * FROM clients LEFT JOIN (orderlist LEFT JOIN indent ON (orderid = indent_id)) ON(client_id=clientid);";
+            String SQL = "SELECT * FROM clients LEFT JOIN orderlist ON client_id = clientid LEFT JOIN indent ON orderid = indent_id WHERE orderid IS NOT NULL;";
             ResultSet resultSet = con.createStatement().executeQuery(SQL);
             while(resultSet.next()) {
             	OrderList ord = new OrderList();
@@ -294,5 +329,42 @@ public class PostgreSQLDAO implements IDAO {
 
 		return false;
 	}
+
+	@Override
+	public HashMap<String, Order> getCache() {
+		return this.cacheOrder;
+	}
+	
+	@Override
+	public HashMap<String, Client> getCli() {
+		return this.cacheCli;
+	}
+
+	public void save(String key, Order obj) {
+		cacheOrder.put(key, obj);
+	}
+	
+	public Order get(String key) {
+		return this.cacheOrder.get(key);
+	}
+
+	public void deleteOrder(String string) {
+		this.cacheOrder.remove(string);
+	}
+
+	public void save(String key, Client client) {
+		cacheCli.put(key, client);
+		
+	}
+	
+	public Client getLast(String key) {
+		return this.cacheCli.get(key);
+	}
+	
+	public void deleteClient(String string) {
+		this.cacheCli.remove(string);
+	}
+	
+	
 
 }

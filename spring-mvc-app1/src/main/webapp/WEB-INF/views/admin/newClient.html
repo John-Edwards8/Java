@@ -26,7 +26,7 @@
             </div>
             <div class="mb-3">
                 <label for="clientPatronymic">Patronymic:</label>
-                <input type="text" class="form-control" id="clientPatronymic" th:field="${client.patronymic}" required>
+                <input type="text" class="form-control" id="clientPatronymic" th:field="${client.patronymic}">
                 <div style="color:red" th:if="${#fields.hasErrors('patronymic')}" th:errors="*{patronymic}">Patronymic Error</div>
             </div>
             <div class="mb-3">

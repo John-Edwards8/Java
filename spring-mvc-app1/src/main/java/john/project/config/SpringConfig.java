@@ -50,7 +50,6 @@ public class SpringConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(authorizationInterceptor)
-                .addPathPatterns("/user/*")
                 .addPathPatterns("/admin/*")
                 .excludePathPatterns("/login");
     }
