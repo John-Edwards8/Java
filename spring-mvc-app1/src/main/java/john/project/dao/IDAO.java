@@ -18,6 +18,7 @@ public interface IDAO {
     void updateOrder(int id, Order order);
     void deleteOrder(int id);
     List<Order> getAllOrders();
+    List<Order> getAllOrdersByClient(int clientID);
     
     void addOrderList(Order order, int clientId);
     void updateOrderList(Order order, int clientID);
