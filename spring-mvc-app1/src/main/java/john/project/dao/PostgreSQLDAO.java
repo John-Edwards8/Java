@@ -217,31 +217,6 @@ public class PostgreSQLDAO implements IDAO {
 
         return orders;
     }
-    
-    @Override
-    public List<Order> getAllOrdersByClient(int clientID) {
-    	List<Order> orders = new ArrayList<>();
-
-        try {
-            String SQL = "SELECT indent_id, indent_date, indent_status FROM orderlist LEFT JOIN indent ON(orderID=indent_id) WHERE clientID=" + clientID + ";";
-            ResultSet resultSet = con.createStatement().executeQuery(SQL);
-
-            while(resultSet.next()) {
-            	Order ord = new Order();
-            	
-            	ord.setId(resultSet.getInt("indent_id"));
-            	ord.setDate(resultSet.getDate("indent_date"));
-            	ord.setStatus(resultSet.getString("indent_status"));
-
-                orders.add(ord);
-            }
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-
-        return orders;
-    }
 
 
     @Override
@@ -262,9 +237,10 @@ public class PostgreSQLDAO implements IDAO {
         this.updateOrder(order.getId(), order);
 
         try {
-        	PreparedStatement preparedStatement = con.prepareStatement("UPDATE orderlist SET clientID=? WHERE orderID=?;");
-            preparedStatement.setInt(1, clientID);
-            preparedStatement.setInt(2, order.getId());
+        	PreparedStatement preparedStatement = con.prepareStatement("UPDATE orderlist SET orderID=?, clientID=? WHERE orderID=?;");
+            preparedStatement.setInt(1, order.getId());
+            preparedStatement.setInt(2, clientID);
+            preparedStatement.setInt(3, order.getId());
             preparedStatement.executeUpdate();
 
         } catch (SQLException throwables) {
@@ -289,7 +265,7 @@ public class PostgreSQLDAO implements IDAO {
     public OrderList getOrderList(int id) {
     	OrderList order = null;
         try {
-            PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM clients LEFT JOIN orderlist ON(client_id=clientid) LEFT JOIN indent ON (orderid = indent_id) WHERE indent_id=?");
+            PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM clients LEFT JOIN (orderlist LEFT JOIN indent ON (orderid = indent_id)) ON(client_id=clientid) WHERE indent_id=?");
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 

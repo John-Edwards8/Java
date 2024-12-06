@@ -41,20 +41,6 @@ public class ControllerAdmin {
     public String newOrder(@ModelAttribute("order") Order order) {
         return "admin/new";
     }
-    @GetMapping("/new/{clientID}")
-    public String newOrderForClient(@ModelAttribute("order") Order order, @PathVariable("clientID") int idCli) {
-    	DAO.save("client", DAO.getClient(idCli));
-        return "admin/new2";
-    }
-    @PostMapping("/orderForClient")
-    public String addOrderForClient(@ModelAttribute("order") Order order, BindingResult res) {
-    	if (res.hasErrors())
-            return "admin/new2";
-        Client client = DAO.getLast("client");
-        DAO.deleteClient("client");
-        DAO.addOrderList(order,client.getId());
-        return "redirect:/admin/clients";
-    }
     //Create
     @PostMapping("/order")
     public String addOrder(@ModelAttribute("order") Order order, BindingResult res) {
@@ -78,23 +64,10 @@ public class ControllerAdmin {
     
     //Update form
     @GetMapping("/{orderID}/{clientID}/editOrder")
-    public String editOrder(Model model, @PathVariable("orderID") int id, @PathVariable("clientID") int idCli) {
+    public String editOrder(Model model, @PathVariable("orderID") int id,@PathVariable("clientID") int idCli) {
         model.addAttribute("order", DAO.getOrder(id));
         DAO.save("lastCli", DAO.getClient(idCli));
         return "admin/update";
-    }
-    @GetMapping("/{orderID}/editOrder")
-    public String editOnlyOrder(Model model, @PathVariable("orderID") int id) {
-        model.addAttribute("order", DAO.getOrder(id));
-        return "admin/update2";
-    }
-    @PostMapping("/orderOnlyUPD/{id}")
-    public String updateOnlyOrder(@ModelAttribute("order") @Valid Order order, @PathVariable("id") int id, BindingResult bindingResult) {
-        if (bindingResult.hasErrors())
-            return "admin/update2";
-
-        DAO.updateOrder(id, order);
-        return "redirect:/admin/clients";
     }
     //Update
     @PostMapping("/orderUPD/{id}")
@@ -124,19 +97,6 @@ public class ControllerAdmin {
     public String deleteOrder(@PathVariable("orderID") int orderID, @PathVariable("clientID") int clientID) {
     	DAO.deleteOrderList(orderID, clientID);
         return "redirect:/admin/orders";
-    }
-    @PostMapping("/orderDEL/{orderID}")
-    public String deleteOnlyOrder(@PathVariable("orderID") int orderID) {
-    	DAO.deleteOrder(orderID);
-        return "redirect:/admin/clients";
-    }
-    
-    //Read-one orderlist
-    @GetMapping("/show/{clientID}")
-    public String showClientsOrders(Model model, @PathVariable("clientID") int clientID) {
-    	model.addAttribute("orders", DAO.getAllOrdersByClient(clientID));
-    	model.addAttribute("clientID", clientID);
-    	return "admin/showOrders";
     }
     
     /*Clients page

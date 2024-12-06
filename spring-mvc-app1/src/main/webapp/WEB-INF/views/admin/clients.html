@@ -23,7 +23,6 @@
                 <th>E-mail</th>
                 <th>UPD</th>
                 <th>DEL</th>
-                <th>Show All Orders</th>
             </tr>
             </thead>
             <tbody>
@@ -37,11 +36,6 @@
                 <td>
                     <form th:method="POST" th:action="@{/admin/clientDEL/{id}(id=${client.getId()})}">
                         <input type="submit" class="btn btn-primary" value="Delete client"/>
-                    </form>
-                </td>
-                <td>
-                    <form th:action="@{/admin/show/{clientID}(clientID=${client.getId()})}">
-                        <input type="submit" class="btn btn-primary" value="Show Orders"/>
                     </form>
                 </td>
             </tr>
