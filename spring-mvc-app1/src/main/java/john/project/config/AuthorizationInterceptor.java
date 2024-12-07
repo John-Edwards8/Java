@@ -12,7 +12,7 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
         boolean adminAuthorized = request.getSession().getAttribute("adminLoggedIn") != null;
 
         if (!adminAuthorized) {
-            response.sendRedirect("/login");
+            response.sendRedirect("/spring-mvc-app1/login");
             return false;
         }
 		

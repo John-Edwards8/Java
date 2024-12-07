@@ -58,6 +58,7 @@ public class ControllerAdmin {
     public String addOrderList(@RequestParam("clientId") int clientId) {
     	Order order = DAO.get("order");
     	DAO.deleteOrder("order");
+    	System.out.print(clientId);
         DAO.addOrderList(order,clientId);
         return "redirect:/admin/orders";
     }
