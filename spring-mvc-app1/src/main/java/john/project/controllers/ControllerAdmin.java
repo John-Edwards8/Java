@@ -12,13 +12,15 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import john.project.dao.PostgreSQLDAO;
 import john.project.models.Client;
+import john.project.models.ClientForm;
 import john.project.models.Order;
+import john.project.models.OrderForm;
 
 @Controller
 @RequestMapping("/admin")
 public class ControllerAdmin {
 	private final PostgreSQLDAO DAO;
-
+	
     public ControllerAdmin(PostgreSQLDAO DAO) {
         this.DAO = DAO;
     }
@@ -38,12 +40,12 @@ public class ControllerAdmin {
     }
     //Create form
     @GetMapping("/new")
-    public String newOrder(@ModelAttribute("order") Order order) {
+    public String newOrder(@ModelAttribute("order") OrderForm order) {
         return "admin/new";
     }
     //Create
     @PostMapping("/order")
-    public String addOrder(@ModelAttribute("order") Order order, BindingResult res) {
+    public String addOrder(@ModelAttribute("order") OrderForm order, BindingResult res) {
     	if (res.hasErrors())
             return "admin/new";
         DAO.save("order",order);
@@ -56,22 +58,36 @@ public class ControllerAdmin {
     }
     @PostMapping("/orderlist")
     public String addOrderList(@RequestParam("clientId") int clientId) {
-    	Order order = DAO.get("order");
+    	OrderForm form = DAO.get("order");
     	DAO.deleteOrder("order");
+    	Order order = new Order
+    			.OrderBuilder()
+    			.id(form.getId())
+    			.date(form.getDate())
+    			.status(form.getStatus())
+    			.build();
         DAO.addOrderList(order,clientId);
         return "redirect:/admin/orders";
     }
     
     //Update form
     @GetMapping("/{orderID}/{clientID}/editOrder")
-    public String editOrder(Model model, @PathVariable("orderID") int id,@PathVariable("clientID") int idCli) {
+    public String editOrder(Model model, @PathVariable("orderID") int id, @PathVariable("clientID") int idCli) {
         model.addAttribute("order", DAO.getOrder(id));
-        DAO.save("lastCli", DAO.getClient(idCli));
+        Client client = DAO.getClient(idCli);
+        ClientForm form = new ClientForm();
+        form.setId(client.getId());
+        form.setName(client.getName());
+        form.setSurname(client.getSurname());
+        form.setPatronymic(client.getPatronymic());
+        form.setPhoneNumber(client.getPhoneNumber());
+        form.setEmail(client.getEmail());
+        DAO.save("lastCli", form);
         return "admin/update";
     }
     //Update
     @PostMapping("/orderUPD/{id}")
-    public String updateOrder(@ModelAttribute("order") @Valid Order order, BindingResult bindingResult) {
+    public String updateOrder(@ModelAttribute("order") @Valid OrderForm order, BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "admin/update";
 
@@ -87,8 +103,14 @@ public class ControllerAdmin {
     }
     @PostMapping("/orderUPDCli")
     public String updateOrder(@RequestParam("clientId") int clientId) {
-    	Order order = DAO.get("updOrder");
+    	OrderForm form = DAO.get("updOrder");
     	DAO.deleteOrder("updOrder");
+    	Order order = new Order
+    			.OrderBuilder()
+    			.id(form.getId())
+    			.date(form.getDate())
+    			.status(form.getStatus())
+    			.build();
         DAO.updateOrderList(order, clientId);
         return "redirect:/admin/orders";
     }
@@ -109,14 +131,25 @@ public class ControllerAdmin {
     }
     //Create form
     @GetMapping("/newClient")
-    public String newClient(@ModelAttribute("client") Client client) {
+    public String newClient(@ModelAttribute("client") ClientForm form) {
         return "admin/newClient";
     }
     //Create
     @PostMapping("/client")
-    public String addClient(@ModelAttribute("client") Client client, BindingResult res) {
+    public String addClient(@ModelAttribute("client") ClientForm form, BindingResult res) {
     	if (res.hasErrors())
             return "admin/newClient";
+    	
+    	Client client = new Client
+    			.ClientBuilder()
+    			.id(form.getId())
+    			.name(form.getName())
+    			.surname(form.getSurname())
+    			.patronymic(form.getPatronymic())
+    			.phoneNumber(form.getPhoneNumber())
+    			.email(form.getEmail())
+    			.build();
+    	
         DAO.addClient(client);
         return "redirect:/admin/clients";
     }
@@ -128,11 +161,21 @@ public class ControllerAdmin {
     }
     //Update
     @PostMapping("/clientUPD/{id}")
-    public String updateClient(@ModelAttribute("client") @Valid Client client, BindingResult bindingResult,
+    public String updateClient(@ModelAttribute("client") @Valid ClientForm form, BindingResult bindingResult,
                          @PathVariable("id") int id) {
         if (bindingResult.hasErrors())
             return "admin/updateCli";
-
+        
+    	Client client = new Client
+    			.ClientBuilder()
+    			.id(form.getId())
+    			.name(form.getName())
+    			.surname(form.getSurname())
+    			.patronymic(form.getPatronymic())
+    			.phoneNumber(form.getPhoneNumber())
+    			.email(form.getEmail())
+    			.build();
+        
         DAO.updateClient(id, client);
         return "redirect:/admin/clients";
     }

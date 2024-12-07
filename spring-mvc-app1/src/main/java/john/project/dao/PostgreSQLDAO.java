@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import john.project.models.Client;
+import john.project.models.ClientForm;
 import john.project.models.Order;
+import john.project.models.OrderForm;
 import john.project.models.OrderList;
 
 @Component
@@ -20,8 +22,8 @@ public class PostgreSQLDAO implements IDAO {
 	private static final String PASSWORD = "1111";
 
 	private static Connection con;
-    private HashMap<String, Order> cacheOrder;
-    private HashMap<String, Client> cacheCli;
+    private HashMap<String, OrderForm> cacheOrder;
+    private HashMap<String, ClientForm> cacheCli;
 
     @Autowired
     public PostgreSQLDAO() {
@@ -92,17 +94,18 @@ public class PostgreSQLDAO implements IDAO {
             String SQL = "SELECT * FROM clients";
             ResultSet resultSet = statement.executeQuery(SQL);
 
-            while(resultSet.next()) {
-            	Client person = new Client();
-            	
-            	person.setId(resultSet.getInt("client_id"));;
-                person.setName(resultSet.getString("client_first_name"));
-                person.setSurname(resultSet.getString("client_second_name"));
-                person.setPatronymic(resultSet.getString("client_patronymic"));
-                person.setPhoneNumber(resultSet.getString("client_phone_number"));
-                person.setEmail(resultSet.getString("client_email"));
+            while(resultSet.next()) {          	
+                Client client = new Client
+        				.ClientBuilder()
+        				.id(resultSet.getInt("client_id"))
+        				.name(resultSet.getString("client_first_name"))
+        				.surname(resultSet.getString("client_second_name"))
+        				.patronymic(resultSet.getString("client_patronymic"))
+        				.phoneNumber(resultSet.getString("client_phone_number"))
+        				.email(resultSet.getString("client_email"))
+        				.build();
 
-                clients.add(person);
+                clients.add(client);
             }
 
         } catch (SQLException throwables) {
@@ -157,14 +160,17 @@ public class PostgreSQLDAO implements IDAO {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             
-            while(resultSet.next()) {
-            	client =  new Client();
-                client.setId(resultSet.getInt("client_id"));;
-                client.setName(resultSet.getString("client_first_name"));
-                client.setSurname(resultSet.getString("client_second_name"));
-                client.setPatronymic(resultSet.getString("client_patronymic"));
-                client.setPhoneNumber(resultSet.getString("client_phone_number"));
-                client.setEmail(resultSet.getString("client_email"));
+            while(resultSet.next()) {               
+                client = new Client
+        				.ClientBuilder()
+        				.id(id)
+        				.name(resultSet.getString("client_first_name"))
+        				.surname(resultSet.getString("client_second_name"))
+        				.patronymic(resultSet.getString("client_patronymic"))
+        				.phoneNumber(resultSet.getString("client_phone_number"))
+        				.email(resultSet.getString("client_email"))
+        				.build();
+                
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -181,10 +187,12 @@ public class PostgreSQLDAO implements IDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while(resultSet.next()) {
-	            order =  new Order();
-	            order.setId(resultSet.getInt("order_id"));
-	            order.setDate(resultSet.getDate("order_date"));
-	            order.setStatus(resultSet.getString("order_status"));
+	            order = new Order
+	            		.OrderBuilder()
+	            		.id(id)
+	            		.date(resultSet.getDate("order_date"))
+	            		.status(resultSet.getString("order_status"))
+	            		.build();
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -201,14 +209,15 @@ public class PostgreSQLDAO implements IDAO {
             String SQL = "SELECT * FROM orders";
             ResultSet resultSet = con.createStatement().executeQuery(SQL);
 
-            while(resultSet.next()) {
-            	Order ord = new Order();
-            	
-            	ord.setId(resultSet.getInt("order_id"));
-            	ord.setDate(resultSet.getDate("order_date"));
-            	ord.setStatus(resultSet.getString("order_status"));
+            while(resultSet.next()) {       	
+            	Order order = new Order
+	            		.OrderBuilder()
+	            		.id(resultSet.getInt("order_id"))
+	            		.date(resultSet.getDate("order_date"))
+	            		.status(resultSet.getString("order_status"))
+	            		.build();
 
-                orders.add(ord);
+                orders.add(order);
             }
 
         } catch (SQLException throwables) {
@@ -263,7 +272,7 @@ public class PostgreSQLDAO implements IDAO {
 
     @Override
     public OrderList getOrderList(int id) {
-    	OrderList order = null;
+    	OrderList list = null;
         try {
             PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM clients c INNER JOIN orderlist ol ON c.client_id = ol.client_id\r\n"
             		+ "INNER JOIN orders o ON ol.order_id = o.order_id\r\n"
@@ -272,16 +281,23 @@ public class PostgreSQLDAO implements IDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             resultSet.next();
-            
-            order = new OrderList();
-            order.setClient(resultSet.getInt("client_id"), resultSet.getString("client_first_name"), resultSet.getString("client_second_name"),
-        			resultSet.getString("client_patronymic"), resultSet.getString("client_phone_number"), resultSet.getString("client_email"));
-            order.setOrder(resultSet.getInt("order_id"), resultSet.getDate("order_date"), resultSet.getString("order_status"));
+                        
+            list = new OrderList.OrderListBuilder()
+            		.client(resultSet.getInt("client_id"),
+            				resultSet.getString("client_first_name"),
+            				resultSet.getString("client_second_name"),
+            				resultSet.getString("client_patronymic"),
+            				resultSet.getString("client_phone_number"),
+            				resultSet.getString("client_email"))
+            		.order(resultSet.getInt("order_id"),
+            			   resultSet.getDate("order_date"),
+            			   resultSet.getString("order_status"))
+            		.build();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
-        return order;
+        return list;
     }
 
     @Override
@@ -291,14 +307,20 @@ public class PostgreSQLDAO implements IDAO {
         try {
             String SQL = "SELECT * FROM clients c INNER JOIN orderlist ol ON c.client_id = ol.client_id INNER JOIN orders o ON o.order_id = ol.order_id;";
             ResultSet resultSet = con.createStatement().executeQuery(SQL);
-            while(resultSet.next()) {
-            	OrderList ord = new OrderList();
-
-            	ord.setClient(resultSet.getInt("client_id"), resultSet.getString("client_first_name"), resultSet.getString("client_second_name"),
-            			resultSet.getString("client_patronymic"), resultSet.getString("client_phone_number"), resultSet.getString("client_email"));
-            	ord.setOrder(resultSet.getInt("order_id"), resultSet.getDate("order_date"), resultSet.getString("order_status"));
-				
-            	orderLists.add(ord);
+            while(resultSet.next()) {         	
+            	OrderList list = new OrderList.OrderListBuilder()
+                		.client(resultSet.getInt("client_id"),
+                				resultSet.getString("client_first_name"),
+                				resultSet.getString("client_second_name"),
+                				resultSet.getString("client_patronymic"),
+                				resultSet.getString("client_phone_number"),
+                				resultSet.getString("client_email"))
+                		.order(resultSet.getInt("order_id"),
+                			   resultSet.getDate("order_date"),
+                			   resultSet.getString("order_status"))
+                		.build();
+            					
+            	orderLists.add(list);
             }
 
         } catch (SQLException throwables) {
@@ -333,20 +355,20 @@ public class PostgreSQLDAO implements IDAO {
 	}
 
 	@Override
-	public HashMap<String, Order> getCache() {
+	public HashMap<String, OrderForm> getCache() {
 		return this.cacheOrder;
 	}
 	
 	@Override
-	public HashMap<String, Client> getCli() {
+	public HashMap<String, ClientForm> getCli() {
 		return this.cacheCli;
 	}
 
-	public void save(String key, Order obj) {
-		cacheOrder.put(key, obj);
+	public void save(String key, OrderForm order) {
+		cacheOrder.put(key, order);
 	}
 	
-	public Order get(String key) {
+	public OrderForm get(String key) {
 		return this.cacheOrder.get(key);
 	}
 
@@ -354,12 +376,12 @@ public class PostgreSQLDAO implements IDAO {
 		this.cacheOrder.remove(string);
 	}
 
-	public void save(String key, Client client) {
+	public void save(String key, ClientForm client) {
 		cacheCli.put(key, client);
 		
 	}
 	
-	public Client getLast(String key) {
+	public ClientForm getLast(String key) {
 		return this.cacheCli.get(key);
 	}
 	
