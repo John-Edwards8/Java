@@ -116,7 +116,7 @@ public class PostgreSQLDAO implements IDAO {
     public void addOrderByAdmin(Order order) {
     	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     	try {
-	        String SQL = "INSERT INTO indent (indent_date, indent_status) VALUES('" + formatter.format(order.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()) + "', '" + order.getStatus() + "')";
+	        String SQL = "INSERT INTO orders (order_date, order_status) VALUES('" + formatter.format(order.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()) + "', '" + order.getStatus() + "')";
 		
 	        con.createStatement().executeUpdate(SQL);
 	    } catch (SQLException throwables) {
@@ -128,7 +128,7 @@ public class PostgreSQLDAO implements IDAO {
     public void updateOrder(int id, Order order) {
     	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     	 try {
-	        PreparedStatement preparedStatement = con.prepareStatement("UPDATE indent SET indent_status = ?, indent_date='" + formatter.format(order.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()) + "' WHERE indent_id = ?");
+	        PreparedStatement preparedStatement = con.prepareStatement("UPDATE orders SET order_status = ?, order_date='" + formatter.format(order.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()) + "' WHERE order_id = ?");
 	
 	        preparedStatement.setString(1, order.getStatus());
 	        preparedStatement.setInt(2, id);
@@ -141,7 +141,7 @@ public class PostgreSQLDAO implements IDAO {
     @Override
     public void deleteOrder(int id) {
     	try {
-            PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM indent WHERE indent_id=?");
+            PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM orders WHERE order_id=?");
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
 
@@ -176,15 +176,15 @@ public class PostgreSQLDAO implements IDAO {
     public Order getOrder(int id) {
     	Order order = null;
         try {
-            PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM indent WHERE indent_id=?");
+            PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM orders WHERE order_id=?");
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while(resultSet.next()) {
 	            order =  new Order();
-	            order.setId(resultSet.getInt("indent_id"));
-	            order.setDate(resultSet.getDate("indent_date"));
-	            order.setStatus(resultSet.getString("indent_status"));
+	            order.setId(resultSet.getInt("order_id"));
+	            order.setDate(resultSet.getDate("order_date"));
+	            order.setStatus(resultSet.getString("order_status"));
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -198,15 +198,15 @@ public class PostgreSQLDAO implements IDAO {
     	List<Order> orders = new ArrayList<>();
 
         try {
-            String SQL = "SELECT * FROM indent";
+            String SQL = "SELECT * FROM orders";
             ResultSet resultSet = con.createStatement().executeQuery(SQL);
 
             while(resultSet.next()) {
             	Order ord = new Order();
             	
-            	ord.setId(resultSet.getInt("indent_id"));
-            	ord.setDate(resultSet.getDate("indent_date"));
-            	ord.setStatus(resultSet.getString("indent_status"));
+            	ord.setId(resultSet.getInt("order_id"));
+            	ord.setDate(resultSet.getDate("order_date"));
+            	ord.setStatus(resultSet.getString("order_status"));
 
                 orders.add(ord);
             }
@@ -224,7 +224,7 @@ public class PostgreSQLDAO implements IDAO {
 		this.addOrderByAdmin(order);
 		
 		try {
-            String SQL = "INSERT INTO orderlist (orderid, clientid) VALUES ((SELECT currval(pg_get_serial_sequence('indent', 'indent_id')))," + clientId + ");";
+            String SQL = "INSERT INTO orderlist (order_id, client_id) VALUES ((SELECT currval(pg_get_serial_sequence('orders', 'order_id')))," + clientId + ");";
             con.createStatement().executeUpdate(SQL);
 
         } catch (SQLException throwables) {
@@ -237,7 +237,7 @@ public class PostgreSQLDAO implements IDAO {
         this.updateOrder(order.getId(), order);
 
         try {
-        	PreparedStatement preparedStatement = con.prepareStatement("UPDATE orderlist SET orderID=?, clientID=? WHERE orderID=?;");
+        	PreparedStatement preparedStatement = con.prepareStatement("UPDATE orderlist SET order_id=?, client_id=? WHERE order_id=?;");
             preparedStatement.setInt(1, order.getId());
             preparedStatement.setInt(2, clientID);
             preparedStatement.setInt(3, order.getId());
@@ -251,7 +251,7 @@ public class PostgreSQLDAO implements IDAO {
     @Override
     public void deleteOrderList(int orderID, int clientID) {
     	try {
-            PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM orderlist WHERE orderID=? AND clientID=?;");
+            PreparedStatement preparedStatement = con.prepareStatement("DELETE FROM orderlist WHERE order_id=? AND client_id=?;");
             preparedStatement.setInt(1, orderID);
             preparedStatement.setInt(2, clientID);
             preparedStatement.executeUpdate();
@@ -265,7 +265,9 @@ public class PostgreSQLDAO implements IDAO {
     public OrderList getOrderList(int id) {
     	OrderList order = null;
         try {
-            PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM clients LEFT JOIN (orderlist LEFT JOIN indent ON (orderid = indent_id)) ON(client_id=clientid) WHERE indent_id=?");
+            PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM clients c INNER JOIN orderlist ol ON c.client_id = ol.client_id\r\n"
+            		+ "INNER JOIN orders o ON ol.order_id = o.order_id\r\n"
+            		+ "WHERE o.order_id = ?;");
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -274,7 +276,7 @@ public class PostgreSQLDAO implements IDAO {
             order = new OrderList();
             order.setClient(resultSet.getInt("client_id"), resultSet.getString("client_first_name"), resultSet.getString("client_second_name"),
         			resultSet.getString("client_patronymic"), resultSet.getString("client_phone_number"), resultSet.getString("client_email"));
-            order.setOrder(resultSet.getInt("indent_id"), resultSet.getDate("indent_date"), resultSet.getString("indent_status"));
+            order.setOrder(resultSet.getInt("order_id"), resultSet.getDate("order_date"), resultSet.getString("order_status"));
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -287,14 +289,14 @@ public class PostgreSQLDAO implements IDAO {
     	List<OrderList> orderLists = new ArrayList<>();
 
         try {
-            String SQL = "SELECT * FROM clients LEFT JOIN orderlist ON client_id = clientid LEFT JOIN indent ON orderid = indent_id WHERE orderid IS NOT NULL;";
+            String SQL = "SELECT * FROM clients c INNER JOIN orderlist ol ON c.client_id = ol.client_id INNER JOIN orders o ON o.order_id = ol.order_id;";
             ResultSet resultSet = con.createStatement().executeQuery(SQL);
             while(resultSet.next()) {
             	OrderList ord = new OrderList();
 
             	ord.setClient(resultSet.getInt("client_id"), resultSet.getString("client_first_name"), resultSet.getString("client_second_name"),
             			resultSet.getString("client_patronymic"), resultSet.getString("client_phone_number"), resultSet.getString("client_email"));
-            	ord.setOrder(resultSet.getInt("indent_id"), resultSet.getDate("indent_date"), resultSet.getString("indent_status"));
+            	ord.setOrder(resultSet.getInt("order_id"), resultSet.getDate("order_date"), resultSet.getString("order_status"));
 				
             	orderLists.add(ord);
             }
@@ -307,7 +309,7 @@ public class PostgreSQLDAO implements IDAO {
     }
     
     @Override
-	public boolean authenticate(String username, String password2) {
+	public boolean authenticate(String username, String password) {
 		String uname;
 		String pass;
 		
@@ -318,7 +320,7 @@ public class PostgreSQLDAO implements IDAO {
             	uname = resultSet.getString("client_email");
             	pass = resultSet.getString("client_password");
 				
-            	if(uname == username && pass == password2) {
+            	if(uname == username && pass == password) {
             		return true;
             	}
             }

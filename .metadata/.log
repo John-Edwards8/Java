@@ -8009,3 +8009,990 @@ java.lang.InterruptedException
 
 !ENTRY org.eclipse.jst.server.core 4 0 2023-12-06 23:24:51.871
 !MESSAGE Could not launch in profiling mode because no profilers are configured.
+!SESSION 2024-12-07 20:36:57.363 -----------------------------------------------
+eclipse.buildId=4.28.0.20230608-1200
+java.version=21
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ru_RU
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.emf.ecore 2 0 2024-12-07 20:36:59.814
+!MESSAGE Both 'org.eclipse.jst.j2ee.core' and 'org.eclipse.jst.j2ee.core' register a package for 'application.xmi'
+
+!ENTRY org.eclipse.linuxtools.docker.core 4 0 2024-12-07 20:37:01.490
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.linuxtools.docker.core [1161]
+  Unresolved requirement: Require-Bundle: org.glassfish.jersey.containers.servlet; bundle-version="2.3.0.1"
+    -> Bundle-SymbolicName: org.glassfish.jersey.containers.servlet; bundle-version="2.30.1.v20221112-0806"
+       org.glassfish.jersey.containers.servlet [1191]
+         Unresolved requirement: Import-Package: org.glassfish.jersey.servlet.internal; version="[2.30.1,2.31.0)"
+           -> Export-Package: org.glassfish.jersey.servlet.internal; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="javax.servlet,javax.servlet.http,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.server,org.glassfish.jersey.server.spi,org.glassfish.jersey.servlet.internal.spi,org.glassfish.jersey.servlet.spi"
+              org.glassfish.jersey.containers.servlet.core [1192]
+                Unresolved requirement: Import-Package: org.glassfish.jersey.server.internal.scanning; version="[2.30.1,2.31.0)"
+                  -> Export-Package: org.glassfish.jersey.server.internal.scanning; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="org.glassfish.jersey.server,org.glassfish.jersey.server.internal"
+                     org.glassfish.jersey.core.jersey-server [1197]
+                       Unresolved requirement: Import-Package: javax.validation; version="[2.0.0,3.0.0)"; resolution:="optional"
+                Unresolved requirement: Import-Package: org.glassfish.jersey.server.spi; version="[2.30.1,3.0.0)"
+                  -> Export-Package: org.glassfish.jersey.server.spi; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.validation,javax.ws.rs,javax.ws.rs.core,org.glassfish.jersey.internal.inject,org.glassfish.jersey.server,org.glassfish.jersey.server.model,org.glassfish.jersey.spi"
+                Unresolved requirement: Import-Package: org.glassfish.jersey.server; version="[2.30.1,3.0.0)"
+                  -> Export-Package: org.glassfish.jersey.server; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.message,org.glassfish.jersey.message.internal,org.glassfish.jersey.server.internal,org.glassfish.jersey.server.internal.inject,org.glassfish.jersey.server.internal.process,org.glassfish.jersey.server.model,org.glassfish.jersey.server.spi,org.glassfish.jersey.server.spi.internal,org.glassfish.jersey.uri"
+                Unresolved requirement: Import-Package: org.glassfish.jersey.server.internal; version="[2.30.1,2.31.0)"
+                  -> Export-Package: org.glassfish.jersey.server.internal; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="javax.annotation,javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.internal.util,org.glassfish.jersey.message.internal,org.glassfish.jersey.model,org.glassfish.jersey.model.internal,org.glassfish.jersey.server,org.glassfish.jersey.server.model,org.glassfish.jersey.server.spi"
+         Unresolved requirement: Import-Package: org.glassfish.jersey.servlet.spi; version="[2.30.1,3.0.0)"
+           -> Export-Package: org.glassfish.jersey.servlet.spi; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.servlet,javax.servlet.http"
+         Unresolved requirement: Import-Package: org.glassfish.jersey.servlet.internal.spi; version="[2.30.1,2.31.0)"
+           -> Export-Package: org.glassfish.jersey.servlet.internal.spi; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="javax.servlet,javax.servlet.http,org.glassfish.jersey.server,org.glassfish.jersey.server.spi"
+         Unresolved requirement: Import-Package: org.glassfish.jersey.server; version="[2.30.1,3.0.0)"
+           -> Export-Package: org.glassfish.jersey.server; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.message,org.glassfish.jersey.message.internal,org.glassfish.jersey.server.internal,org.glassfish.jersey.server.internal.inject,org.glassfish.jersey.server.internal.process,org.glassfish.jersey.server.model,org.glassfish.jersey.server.spi,org.glassfish.jersey.server.spi.internal,org.glassfish.jersey.uri"
+         Unresolved requirement: Import-Package: org.glassfish.jersey.servlet; version="[2.30.1,3.0.0)"
+           -> Export-Package: org.glassfish.jersey.servlet; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.servlet,javax.servlet.http,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.server,org.glassfish.jersey.server.spi"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.eclipse.linuxtools.docker.core [osgi.identity; type="osgi.bundle"; version:Version="5.11.0.202306052033"; osgi.identity="org.eclipse.linuxtools.docker.core"; singleton:="true"] because it is exposed to package 'org.glassfish.jersey.internal.l10n' from resources org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.40.0"; osgi.identity="org.glassfish.jersey.core.jersey-common"] and org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.core.jersey-common"] via two dependency chains.
+
+Chain 1:
+  org.eclipse.linuxtools.docker.core [osgi.identity; type="osgi.bundle"; version:Version="5.11.0.202306052033"; osgi.identity="org.eclipse.linuxtools.docker.core"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.glassfish.jersey.core.jersey-common)(bundle-version>=2.30.1))
+     |
+    provide: osgi.wiring.bundle: org.glassfish.jersey.core.jersey-common
+  org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.40.0"; osgi.identity="org.glassfish.jersey.core.jersey-common"]
+
+Chain 2:
+  org.eclipse.linuxtools.docker.core [osgi.identity; type="osgi.bundle"; version:Version="5.11.0.202306052033"; osgi.identity="org.eclipse.linuxtools.docker.core"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.glassfish.jersey.containers.servlet)(bundle-version>=2.3.0.1))
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="2.30.1.v20221112-0806"; osgi.wiring.bundle="org.glassfish.jersey.containers.servlet"
+  org.glassfish.jersey.containers.servlet [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.containers.servlet"]
+    import: (&(osgi.wiring.package=org.glassfish.jersey.internal.l10n)(&(version>=2.30.1)(!(version>=2.31.0))))
+     |
+    export: osgi.wiring.package: org.glassfish.jersey.internal.l10n
+  org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.core.jersey-common"]
+	at org.eclipse.osgi.container.Module.start(Module.java:463)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1852)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1845)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1786)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1750)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1672)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.eclipse.linuxtools.docker.ui 4 0 2024-12-07 20:37:02.414
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.linuxtools.docker.ui [1164]
+  Unresolved requirement: Require-Bundle: org.eclipse.linuxtools.docker.core; bundle-version="1.0.0"
+    -> Bundle-SymbolicName: org.eclipse.linuxtools.docker.core; bundle-version="5.11.0.202306052033"; singleton:="true"
+       org.eclipse.linuxtools.docker.core [1161]
+         Unresolved requirement: Require-Bundle: org.glassfish.jersey.containers.servlet; bundle-version="2.3.0.1"
+           -> Bundle-SymbolicName: org.glassfish.jersey.containers.servlet; bundle-version="2.30.1.v20221112-0806"
+              org.glassfish.jersey.containers.servlet [1191]
+                Unresolved requirement: Import-Package: org.glassfish.jersey.servlet.internal; version="[2.30.1,2.31.0)"
+                  -> Export-Package: org.glassfish.jersey.servlet.internal; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="javax.servlet,javax.servlet.http,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.server,org.glassfish.jersey.server.spi,org.glassfish.jersey.servlet.internal.spi,org.glassfish.jersey.servlet.spi"
+                     org.glassfish.jersey.containers.servlet.core [1192]
+                       Unresolved requirement: Import-Package: org.glassfish.jersey.server.internal.scanning; version="[2.30.1,2.31.0)"
+                         -> Export-Package: org.glassfish.jersey.server.internal.scanning; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="org.glassfish.jersey.server,org.glassfish.jersey.server.internal"
+                            org.glassfish.jersey.core.jersey-server [1197]
+                              Unresolved requirement: Import-Package: javax.validation; version="[2.0.0,3.0.0)"; resolution:="optional"
+                       Unresolved requirement: Import-Package: org.glassfish.jersey.server.spi; version="[2.30.1,3.0.0)"
+                         -> Export-Package: org.glassfish.jersey.server.spi; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.validation,javax.ws.rs,javax.ws.rs.core,org.glassfish.jersey.internal.inject,org.glassfish.jersey.server,org.glassfish.jersey.server.model,org.glassfish.jersey.spi"
+                       Unresolved requirement: Import-Package: org.glassfish.jersey.server; version="[2.30.1,3.0.0)"
+                         -> Export-Package: org.glassfish.jersey.server; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.message,org.glassfish.jersey.message.internal,org.glassfish.jersey.server.internal,org.glassfish.jersey.server.internal.inject,org.glassfish.jersey.server.internal.process,org.glassfish.jersey.server.model,org.glassfish.jersey.server.spi,org.glassfish.jersey.server.spi.internal,org.glassfish.jersey.uri"
+                       Unresolved requirement: Import-Package: org.glassfish.jersey.server.internal; version="[2.30.1,2.31.0)"
+                         -> Export-Package: org.glassfish.jersey.server.internal; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="javax.annotation,javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.internal.util,org.glassfish.jersey.message.internal,org.glassfish.jersey.model,org.glassfish.jersey.model.internal,org.glassfish.jersey.server,org.glassfish.jersey.server.model,org.glassfish.jersey.server.spi"
+                Unresolved requirement: Import-Package: org.glassfish.jersey.servlet.spi; version="[2.30.1,3.0.0)"
+                  -> Export-Package: org.glassfish.jersey.servlet.spi; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.servlet,javax.servlet.http"
+                Unresolved requirement: Import-Package: org.glassfish.jersey.servlet.internal.spi; version="[2.30.1,2.31.0)"
+                  -> Export-Package: org.glassfish.jersey.servlet.internal.spi; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="javax.servlet,javax.servlet.http,org.glassfish.jersey.server,org.glassfish.jersey.server.spi"
+                Unresolved requirement: Import-Package: org.glassfish.jersey.server; version="[2.30.1,3.0.0)"
+                  -> Export-Package: org.glassfish.jersey.server; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.message,org.glassfish.jersey.message.internal,org.glassfish.jersey.server.internal,org.glassfish.jersey.server.internal.inject,org.glassfish.jersey.server.internal.process,org.glassfish.jersey.server.model,org.glassfish.jersey.server.spi,org.glassfish.jersey.server.spi.internal,org.glassfish.jersey.uri"
+                Unresolved requirement: Import-Package: org.glassfish.jersey.servlet; version="[2.30.1,3.0.0)"
+                  -> Export-Package: org.glassfish.jersey.servlet; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.servlet,javax.servlet.http,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.server,org.glassfish.jersey.server.spi"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.eclipse.linuxtools.docker.core [osgi.identity; type="osgi.bundle"; version:Version="5.11.0.202306052033"; osgi.identity="org.eclipse.linuxtools.docker.core"; singleton:="true"] because it is exposed to package 'org.glassfish.jersey.internal.l10n' from resources org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.40.0"; osgi.identity="org.glassfish.jersey.core.jersey-common"] and org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.core.jersey-common"] via two dependency chains.
+
+Chain 1:
+  org.eclipse.linuxtools.docker.core [osgi.identity; type="osgi.bundle"; version:Version="5.11.0.202306052033"; osgi.identity="org.eclipse.linuxtools.docker.core"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.glassfish.jersey.core.jersey-common)(bundle-version>=2.30.1))
+     |
+    provide: osgi.wiring.bundle: org.glassfish.jersey.core.jersey-common
+  org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.40.0"; osgi.identity="org.glassfish.jersey.core.jersey-common"]
+
+Chain 2:
+  org.eclipse.linuxtools.docker.core [osgi.identity; type="osgi.bundle"; version:Version="5.11.0.202306052033"; osgi.identity="org.eclipse.linuxtools.docker.core"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.glassfish.jersey.containers.servlet)(bundle-version>=2.3.0.1))
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="2.30.1.v20221112-0806"; osgi.wiring.bundle="org.glassfish.jersey.containers.servlet"
+  org.glassfish.jersey.containers.servlet [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.containers.servlet"]
+    import: (&(osgi.wiring.package=org.glassfish.jersey.internal.l10n)(&(version>=2.30.1)(!(version>=2.31.0))))
+     |
+    export: osgi.wiring.package: org.glassfish.jersey.internal.l10n
+  org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.core.jersey-common"]
+	at org.eclipse.osgi.container.Module.start(Module.java:463)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1852)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1845)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1786)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1750)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1672)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.glassfish.jersey.containers.servlet 4 0 2024-12-07 20:37:02.494
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.glassfish.jersey.containers.servlet [1191]
+  Unresolved requirement: Import-Package: org.glassfish.jersey.servlet.internal; version="[2.30.1,2.31.0)"
+    -> Export-Package: org.glassfish.jersey.servlet.internal; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="javax.servlet,javax.servlet.http,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.server,org.glassfish.jersey.server.spi,org.glassfish.jersey.servlet.internal.spi,org.glassfish.jersey.servlet.spi"
+       org.glassfish.jersey.containers.servlet.core [1192]
+         Unresolved requirement: Import-Package: org.glassfish.jersey.server.internal.scanning; version="[2.30.1,2.31.0)"
+           -> Export-Package: org.glassfish.jersey.server.internal.scanning; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="org.glassfish.jersey.server,org.glassfish.jersey.server.internal"
+              org.glassfish.jersey.core.jersey-server [1197]
+                Unresolved requirement: Import-Package: javax.validation; version="[2.0.0,3.0.0)"; resolution:="optional"
+         Unresolved requirement: Import-Package: org.glassfish.jersey.server.spi; version="[2.30.1,3.0.0)"
+           -> Export-Package: org.glassfish.jersey.server.spi; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.validation,javax.ws.rs,javax.ws.rs.core,org.glassfish.jersey.internal.inject,org.glassfish.jersey.server,org.glassfish.jersey.server.model,org.glassfish.jersey.spi"
+         Unresolved requirement: Import-Package: org.glassfish.jersey.server; version="[2.30.1,3.0.0)"
+           -> Export-Package: org.glassfish.jersey.server; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.message,org.glassfish.jersey.message.internal,org.glassfish.jersey.server.internal,org.glassfish.jersey.server.internal.inject,org.glassfish.jersey.server.internal.process,org.glassfish.jersey.server.model,org.glassfish.jersey.server.spi,org.glassfish.jersey.server.spi.internal,org.glassfish.jersey.uri"
+         Unresolved requirement: Import-Package: org.glassfish.jersey.server.internal; version="[2.30.1,2.31.0)"
+           -> Export-Package: org.glassfish.jersey.server.internal; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="javax.annotation,javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.internal.util,org.glassfish.jersey.message.internal,org.glassfish.jersey.model,org.glassfish.jersey.model.internal,org.glassfish.jersey.server,org.glassfish.jersey.server.model,org.glassfish.jersey.server.spi"
+  Unresolved requirement: Import-Package: org.glassfish.jersey.servlet.spi; version="[2.30.1,3.0.0)"
+    -> Export-Package: org.glassfish.jersey.servlet.spi; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.servlet,javax.servlet.http"
+  Unresolved requirement: Import-Package: org.glassfish.jersey.servlet.internal.spi; version="[2.30.1,2.31.0)"
+    -> Export-Package: org.glassfish.jersey.servlet.internal.spi; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="javax.servlet,javax.servlet.http,org.glassfish.jersey.server,org.glassfish.jersey.server.spi"
+  Unresolved requirement: Import-Package: org.glassfish.jersey.server; version="[2.30.1,3.0.0)"
+    -> Export-Package: org.glassfish.jersey.server; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.message,org.glassfish.jersey.message.internal,org.glassfish.jersey.server.internal,org.glassfish.jersey.server.internal.inject,org.glassfish.jersey.server.internal.process,org.glassfish.jersey.server.model,org.glassfish.jersey.server.spi,org.glassfish.jersey.server.spi.internal,org.glassfish.jersey.uri"
+  Unresolved requirement: Import-Package: org.glassfish.jersey.servlet; version="[2.30.1,3.0.0)"
+    -> Export-Package: org.glassfish.jersey.servlet; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.servlet,javax.servlet.http,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.server,org.glassfish.jersey.server.spi"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.glassfish.jersey.containers.servlet [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.containers.servlet"] because it is exposed to package 'org.glassfish.jersey.internal.l10n' from resources org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.core.jersey-common"] and org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.40.0"; osgi.identity="org.glassfish.jersey.core.jersey-common"] via two dependency chains.
+
+Chain 1:
+  org.glassfish.jersey.containers.servlet [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.containers.servlet"]
+    import: (&(osgi.wiring.package=org.glassfish.jersey.internal.l10n)(&(version>=2.30.1)(!(version>=2.31.0))))
+     |
+    export: osgi.wiring.package: org.glassfish.jersey.internal.l10n
+  org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.core.jersey-common"]
+
+Chain 2:
+  org.glassfish.jersey.containers.servlet [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.containers.servlet"]
+    import: (&(osgi.wiring.package=org.glassfish.jersey.servlet.internal)(&(version>=2.30.1)(!(version>=2.31.0))))
+     |
+    export: osgi.wiring.package=org.glassfish.jersey.servlet.internal; uses:=org.glassfish.jersey.server
+  org.glassfish.jersey.containers.servlet.core [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.containers.servlet.core"]
+    import: (&(osgi.wiring.package=org.glassfish.jersey.server)(&(version>=2.30.1)(!(version>=3.0.0))))
+     |
+    export: osgi.wiring.package=org.glassfish.jersey.server; uses:=org.glassfish.jersey
+  org.glassfish.jersey.core.jersey-server [osgi.identity; type="osgi.bundle"; version:Version="2.40.0"; osgi.identity="org.glassfish.jersey.core.jersey-server"]
+    import: (&(osgi.wiring.package=org.glassfish.jersey)(&(version>=2.40.0)(!(version>=3.0.0))))
+     |
+    export: osgi.wiring.package: org.glassfish.jersey; uses:=org.glassfish.jersey.internal.l10n
+    export: osgi.wiring.package=org.glassfish.jersey.internal.l10n
+  org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.40.0"; osgi.identity="org.glassfish.jersey.core.jersey-common"]
+	at org.eclipse.osgi.container.Module.start(Module.java:463)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1852)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1845)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1786)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1750)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1672)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.glassfish.jersey.containers.servlet.core 4 0 2024-12-07 20:37:02.712
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.glassfish.jersey.containers.servlet.core [1192]
+  Unresolved requirement: Import-Package: org.glassfish.jersey.server.internal.scanning; version="[2.30.1,2.31.0)"
+    -> Export-Package: org.glassfish.jersey.server.internal.scanning; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="org.glassfish.jersey.server,org.glassfish.jersey.server.internal"
+       org.glassfish.jersey.core.jersey-server [1197]
+         Unresolved requirement: Import-Package: javax.validation; version="[2.0.0,3.0.0)"; resolution:="optional"
+  Unresolved requirement: Import-Package: org.glassfish.jersey.server.spi; version="[2.30.1,3.0.0)"
+    -> Export-Package: org.glassfish.jersey.server.spi; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.validation,javax.ws.rs,javax.ws.rs.core,org.glassfish.jersey.internal.inject,org.glassfish.jersey.server,org.glassfish.jersey.server.model,org.glassfish.jersey.spi"
+  Unresolved requirement: Import-Package: org.glassfish.jersey.server; version="[2.30.1,3.0.0)"
+    -> Export-Package: org.glassfish.jersey.server; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.message,org.glassfish.jersey.message.internal,org.glassfish.jersey.server.internal,org.glassfish.jersey.server.internal.inject,org.glassfish.jersey.server.internal.process,org.glassfish.jersey.server.model,org.glassfish.jersey.server.spi,org.glassfish.jersey.server.spi.internal,org.glassfish.jersey.uri"
+  Unresolved requirement: Import-Package: org.glassfish.jersey.server.internal; version="[2.30.1,2.31.0)"
+    -> Export-Package: org.glassfish.jersey.server.internal; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="javax.annotation,javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.internal.util,org.glassfish.jersey.message.internal,org.glassfish.jersey.model,org.glassfish.jersey.model.internal,org.glassfish.jersey.server,org.glassfish.jersey.server.model,org.glassfish.jersey.server.spi"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.glassfish.jersey.containers.servlet.core [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.containers.servlet.core"] because it is exposed to package 'org.glassfish.jersey.internal' from resources org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.core.jersey-common"] and org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.40.0"; osgi.identity="org.glassfish.jersey.core.jersey-common"] via two dependency chains.
+
+Chain 1:
+  org.glassfish.jersey.containers.servlet.core [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.containers.servlet.core"]
+    import: (&(osgi.wiring.package=org.glassfish.jersey.internal)(&(version>=2.30.1)(!(version>=2.31.0))))
+     |
+    export: osgi.wiring.package: org.glassfish.jersey.internal
+  org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.core.jersey-common"]
+
+Chain 2:
+  org.glassfish.jersey.containers.servlet.core [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.containers.servlet.core"]
+    import: (&(osgi.wiring.package=org.glassfish.jersey.server.internal)(&(version>=2.30.1)(!(version>=2.31.0))))
+     |
+    export: osgi.wiring.package=org.glassfish.jersey.server.internal; uses:=org.glassfish.jersey.server
+  org.glassfish.jersey.core.jersey-server [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.core.jersey-server"]
+    import: (&(osgi.wiring.package=org.glassfish.jersey.server)(&(version>=2.30.0)(!(version>=3.0.0))))
+     |
+    export: osgi.wiring.package=org.glassfish.jersey.server; uses:=org.glassfish.jersey
+  org.glassfish.jersey.core.jersey-server [osgi.identity; type="osgi.bundle"; version:Version="2.40.0"; osgi.identity="org.glassfish.jersey.core.jersey-server"]
+    import: (&(osgi.wiring.package=org.glassfish.jersey)(&(version>=2.40.0)(!(version>=3.0.0))))
+     |
+    export: osgi.wiring.package: org.glassfish.jersey; uses:=org.glassfish.jersey.internal
+    export: osgi.wiring.package=org.glassfish.jersey.internal
+  org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.40.0"; osgi.identity="org.glassfish.jersey.core.jersey-common"]
+	at org.eclipse.osgi.container.Module.start(Module.java:463)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1852)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1845)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1786)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1750)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1672)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.eclipse.jface 2 0 2024-12-07 20:37:11.938
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2024-12-07 20:37:11.939
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		WorkbenchHandlerServiceHandler("org.eclipse.jdt.ui.navigate.open.type"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		WorkbenchHandlerServiceHandler("org.eclipse.lsp4e.symbolinworkspace"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.ui 4 4 2024-12-07 20:37:16.538
+!MESSAGE Unable to create part
+!STACK 1
+org.eclipse.ui.PartInitException: Cannot determine URI for '/spring-mvc-app1/src/main/java/john/project/controllers/ControllerAdmin.java'.
+	at org.eclipse.ui.texteditor.AbstractTextEditor.internalInit(AbstractTextEditor.java:3198)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.init(AbstractTextEditor.java:3209)
+	at org.eclipse.ui.internal.EditorReference.initialize(EditorReference.java:353)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityPart.create(CompatibilityPart.java:344)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:58)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:987)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:952)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.internalInject(InjectorImpl.java:141)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.internalMake(InjectorImpl.java:395)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.make(InjectorImpl.java:322)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.make(ContextInjectionFactory.java:202)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.createFromBundle(ReflectionContributionFactory.java:91)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.doCreate(ReflectionContributionFactory.java:60)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.create(ReflectionContributionFactory.java:42)
+	at org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer.createWidget(ContributedPartRenderer.java:132)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createWidget(PartRenderingEngine.java:995)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:659)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:763)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$2.run(PartRenderingEngine.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:712)
+	at org.eclipse.e4.ui.workbench.renderers.swt.StackRenderer.showTab(StackRenderer.java:1344)
+	at org.eclipse.e4.ui.workbench.renderers.swt.LazyStackRenderer.postProcess(LazyStackRenderer.java:116)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:677)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:763)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$2.run(PartRenderingEngine.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:712)
+	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:72)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:673)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$1.run(PartRenderingEngine.java:544)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:528)
+	at org.eclipse.e4.ui.workbench.renderers.swt.ElementReferenceRenderer.createWidget(ElementReferenceRenderer.java:73)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createWidget(PartRenderingEngine.java:995)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:659)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:763)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$2.run(PartRenderingEngine.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:712)
+	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:72)
+	at org.eclipse.e4.ui.workbench.renderers.swt.SashRenderer.processContents(SashRenderer.java:150)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:673)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:763)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$2.run(PartRenderingEngine.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:712)
+	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:72)
+	at org.eclipse.e4.ui.workbench.renderers.swt.SashRenderer.processContents(SashRenderer.java:150)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:673)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:763)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$2.run(PartRenderingEngine.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:712)
+	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:72)
+	at org.eclipse.e4.ui.workbench.renderers.swt.PerspectiveRenderer.processContents(PerspectiveRenderer.java:51)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:673)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:763)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$2.run(PartRenderingEngine.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:712)
+	at org.eclipse.e4.ui.workbench.renderers.swt.PerspectiveStackRenderer.showTab(PerspectiveStackRenderer.java:82)
+	at org.eclipse.e4.ui.workbench.renderers.swt.LazyStackRenderer.postProcess(LazyStackRenderer.java:116)
+	at org.eclipse.e4.ui.workbench.renderers.swt.PerspectiveStackRenderer.postProcess(PerspectiveStackRenderer.java:64)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:677)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:763)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$2.run(PartRenderingEngine.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:712)
+	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:72)
+	at org.eclipse.e4.ui.workbench.renderers.swt.SashRenderer.processContents(SashRenderer.java:150)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:673)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:763)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$2.run(PartRenderingEngine.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:712)
+	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:72)
+	at org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer.processContents(WBWRenderer.java:658)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:673)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:763)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$2.run(PartRenderingEngine.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:712)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1083)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:643)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:550)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:171)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:402)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1440)
+Caused by: org.eclipse.core.runtime.CoreException: Cannot determine URI for '/spring-mvc-app1/src/main/java/john/project/controllers/ControllerAdmin.java'.
+	at org.eclipse.core.internal.filebuffers.ResourceFileBuffer.create(ResourceFileBuffer.java:239)
+	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.connect(TextFileBufferManager.java:115)
+	at org.eclipse.ui.editors.text.TextFileDocumentProvider.createFileInfo(TextFileDocumentProvider.java:563)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitDocumentProvider.createFileInfo(CompilationUnitDocumentProvider.java:1018)
+	at org.eclipse.ui.editors.text.TextFileDocumentProvider.connect(TextFileDocumentProvider.java:481)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitDocumentProvider.connect(CompilationUnitDocumentProvider.java:1284)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.doSetInput(AbstractTextEditor.java:4177)
+	at org.eclipse.ui.texteditor.StatusTextEditor.doSetInput(StatusTextEditor.java:262)
+	at org.eclipse.ui.texteditor.AbstractDecoratedTextEditor.doSetInput(AbstractDecoratedTextEditor.java:1474)
+	at org.eclipse.jdt.internal.ui.javaeditor.JavaEditor.internalDoSetInput(JavaEditor.java:2556)
+	at org.eclipse.jdt.internal.ui.javaeditor.JavaEditor.doSetInput(JavaEditor.java:2529)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitEditor.doSetInput(CompilationUnitEditor.java:1415)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.lambda$1(AbstractTextEditor.java:3167)
+	at org.eclipse.ui.internal.WorkbenchWindow.run(WorkbenchWindow.java:2291)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.internalInit(AbstractTextEditor.java:3184)
+	... 104 more
+!SUBENTRY 1 org.eclipse.core.filebuffers 4 0 2024-12-07 20:37:16.540
+!MESSAGE Cannot determine URI for '/spring-mvc-app1/src/main/java/john/project/controllers/ControllerAdmin.java'.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Cannot determine URI for '/spring-mvc-app1/src/main/java/john/project/controllers/ControllerAdmin.java'.
+	at org.eclipse.core.internal.filebuffers.ResourceFileBuffer.create(ResourceFileBuffer.java:239)
+	at org.eclipse.core.internal.filebuffers.TextFileBufferManager.connect(TextFileBufferManager.java:115)
+	at org.eclipse.ui.editors.text.TextFileDocumentProvider.createFileInfo(TextFileDocumentProvider.java:563)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitDocumentProvider.createFileInfo(CompilationUnitDocumentProvider.java:1018)
+	at org.eclipse.ui.editors.text.TextFileDocumentProvider.connect(TextFileDocumentProvider.java:481)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitDocumentProvider.connect(CompilationUnitDocumentProvider.java:1284)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.doSetInput(AbstractTextEditor.java:4177)
+	at org.eclipse.ui.texteditor.StatusTextEditor.doSetInput(StatusTextEditor.java:262)
+	at org.eclipse.ui.texteditor.AbstractDecoratedTextEditor.doSetInput(AbstractDecoratedTextEditor.java:1474)
+	at org.eclipse.jdt.internal.ui.javaeditor.JavaEditor.internalDoSetInput(JavaEditor.java:2556)
+	at org.eclipse.jdt.internal.ui.javaeditor.JavaEditor.doSetInput(JavaEditor.java:2529)
+	at org.eclipse.jdt.internal.ui.javaeditor.CompilationUnitEditor.doSetInput(CompilationUnitEditor.java:1415)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.lambda$1(AbstractTextEditor.java:3167)
+	at org.eclipse.ui.internal.WorkbenchWindow.run(WorkbenchWindow.java:2291)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.internalInit(AbstractTextEditor.java:3184)
+	at org.eclipse.ui.texteditor.AbstractTextEditor.init(AbstractTextEditor.java:3209)
+	at org.eclipse.ui.internal.EditorReference.initialize(EditorReference.java:353)
+	at org.eclipse.ui.internal.e4.compatibility.CompatibilityPart.create(CompatibilityPart.java:344)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:58)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:987)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:952)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.internalInject(InjectorImpl.java:141)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.internalMake(InjectorImpl.java:395)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.make(InjectorImpl.java:322)
+	at org.eclipse.e4.core.contexts.ContextInjectionFactory.make(ContextInjectionFactory.java:202)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.createFromBundle(ReflectionContributionFactory.java:91)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.doCreate(ReflectionContributionFactory.java:60)
+	at org.eclipse.e4.ui.internal.workbench.ReflectionContributionFactory.create(ReflectionContributionFactory.java:42)
+	at org.eclipse.e4.ui.workbench.renderers.swt.ContributedPartRenderer.createWidget(ContributedPartRenderer.java:132)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createWidget(PartRenderingEngine.java:995)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:659)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:763)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$2.run(PartRenderingEngine.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:712)
+	at org.eclipse.e4.ui.workbench.renderers.swt.StackRenderer.showTab(StackRenderer.java:1344)
+	at org.eclipse.e4.ui.workbench.renderers.swt.LazyStackRenderer.postProcess(LazyStackRenderer.java:116)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:677)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:763)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$2.run(PartRenderingEngine.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:712)
+	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:72)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:673)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$1.run(PartRenderingEngine.java:544)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:528)
+	at org.eclipse.e4.ui.workbench.renderers.swt.ElementReferenceRenderer.createWidget(ElementReferenceRenderer.java:73)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createWidget(PartRenderingEngine.java:995)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:659)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:763)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$2.run(PartRenderingEngine.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:712)
+	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:72)
+	at org.eclipse.e4.ui.workbench.renderers.swt.SashRenderer.processContents(SashRenderer.java:150)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:673)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:763)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$2.run(PartRenderingEngine.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:712)
+	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:72)
+	at org.eclipse.e4.ui.workbench.renderers.swt.SashRenderer.processContents(SashRenderer.java:150)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:673)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:763)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$2.run(PartRenderingEngine.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:712)
+	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:72)
+	at org.eclipse.e4.ui.workbench.renderers.swt.PerspectiveRenderer.processContents(PerspectiveRenderer.java:51)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:673)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:763)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$2.run(PartRenderingEngine.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:712)
+	at org.eclipse.e4.ui.workbench.renderers.swt.PerspectiveStackRenderer.showTab(PerspectiveStackRenderer.java:82)
+	at org.eclipse.e4.ui.workbench.renderers.swt.LazyStackRenderer.postProcess(LazyStackRenderer.java:116)
+	at org.eclipse.e4.ui.workbench.renderers.swt.PerspectiveStackRenderer.postProcess(PerspectiveStackRenderer.java:64)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:677)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:763)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$2.run(PartRenderingEngine.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:712)
+	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:72)
+	at org.eclipse.e4.ui.workbench.renderers.swt.SashRenderer.processContents(SashRenderer.java:150)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:673)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:763)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$2.run(PartRenderingEngine.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:712)
+	at org.eclipse.e4.ui.workbench.renderers.swt.SWTPartRenderer.processContents(SWTPartRenderer.java:72)
+	at org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer.processContents(WBWRenderer.java:658)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:673)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeCreateGui(PartRenderingEngine.java:763)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$2.run(PartRenderingEngine.java:728)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.createGui(PartRenderingEngine.java:712)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1083)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:643)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:550)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:171)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:402)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1440)
+!SUBENTRY 2 org.eclipse.core.filebuffers 4 0 2024-12-07 20:37:16.542
+!MESSAGE Cannot determine URI for '/spring-mvc-app1/src/main/java/john/project/controllers/ControllerAdmin.java'.
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-12-07 20:37:18.936
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\ponom'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-07 20:37:43.775
+!MESSAGE Classpath changed for project: spring-mvc-app1
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-07 20:37:43.776
+!MESSAGE Boot project ADDED: spring-mvc-app1
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-07 20:37:43.778
+!MESSAGE Starting Boot LS...
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-07 20:37:43.819
+!MESSAGE Started Boot LS process
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2024-12-07 20:37:43.842
+!MESSAGE Command list starting LS: org.springframework.tooling.boot.ls
+START:
+C:\Program Files\Java\jdk-21\bin\javaw.exe
+-cp
+C:\Users\ponom\eclipse\jee-2023-06\eclipse\..\..\..\.p2\pool\plugins\org.springframework.tooling.boot.ls_1.50.0.202310252332\servers\spring-boot-language-server\BOOT-INF\classes;C:\Users\ponom\eclipse\jee-2023-06\eclipse\..\..\..\.p2\pool\plugins\org.springframework.tooling.boot.ls_1.50.0.202310252332\servers\spring-boot-language-server\BOOT-INF\lib\*
+-Dsts.lsp.client=eclipse
+-Dlsp.completions.indentation.enable=true
+-Xmx1024m
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:TieredStopAtLevel=1
+-Xlog:jni+resolve=off
+-Dspring.config.location=file:C:\Users\ponom\eclipse\jee-2023-06\eclipse\..\..\..\.p2\pool\plugins\org.springframework.tooling.boot.ls_1.50.0.202310252332\servers\spring-boot-language-server\BOOT-INF\classes\application.properties
+-XX:ErrorFile=C:/Projs/Java/.metadata/.plugins/org.springframework.tooling.boot.ls/fatal-error-spring-boot_1733600263841
+org.springframework.ide.vscode.boot.app.BootLanguageServerBootApp
+--languageserver.hover-timeout=225
+END
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-07 20:37:43.843
+!MESSAGE DelegatingStreamConnectionProvider - Starting Boot LS
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2024-12-07 20:37:43.862
+!MESSAGE Started org.springframework.tooling.boot.ls LS process 488
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-07 20:37:48.154
+!MESSAGE Classpath changed for project: spring-mvc-app1
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-07 20:37:52.056
+!MESSAGE Classpath changed for project: spring-mvc-app1
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2024-12-07 20:39:37.233
+!MESSAGE The Tomcat server configuration at \Servers\Tomcat v10.1 Server at localhost-config is missing. Check the server for errors.
+!SESSION 2024-12-07 20:41:41.870 -----------------------------------------------
+eclipse.buildId=4.28.0.20230608-1200
+java.version=21
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ru_RU
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.emf.ecore 2 0 2024-12-07 20:41:44.504
+!MESSAGE Both 'org.eclipse.jst.j2ee.core' and 'org.eclipse.jst.j2ee.core' register a package for 'application.xmi'
+
+!ENTRY org.eclipse.linuxtools.docker.core 4 0 2024-12-07 20:41:46.080
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.linuxtools.docker.core [1161]
+  Unresolved requirement: Require-Bundle: org.glassfish.jersey.containers.servlet; bundle-version="2.3.0.1"
+    -> Bundle-SymbolicName: org.glassfish.jersey.containers.servlet; bundle-version="2.30.1.v20221112-0806"
+       org.glassfish.jersey.containers.servlet [1191]
+         Unresolved requirement: Import-Package: org.glassfish.jersey.servlet; version="[2.30.1,3.0.0)"
+           -> Export-Package: org.glassfish.jersey.servlet; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.servlet,javax.servlet.http,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.server,org.glassfish.jersey.server.spi"
+              org.glassfish.jersey.containers.servlet.core [1192]
+                Unresolved requirement: Import-Package: org.glassfish.jersey.server; version="[2.30.1,3.0.0)"
+                  -> Export-Package: org.glassfish.jersey.server; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.message,org.glassfish.jersey.message.internal,org.glassfish.jersey.server.internal,org.glassfish.jersey.server.internal.inject,org.glassfish.jersey.server.internal.process,org.glassfish.jersey.server.model,org.glassfish.jersey.server.spi,org.glassfish.jersey.server.spi.internal,org.glassfish.jersey.uri"
+                     org.glassfish.jersey.core.jersey-server [1197]
+                       Unresolved requirement: Import-Package: javax.validation; version="[2.0.0,3.0.0)"; resolution:="optional"
+                Unresolved requirement: Import-Package: org.glassfish.jersey.server.internal.scanning; version="[2.30.1,2.31.0)"
+                  -> Export-Package: org.glassfish.jersey.server.internal.scanning; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="org.glassfish.jersey.server,org.glassfish.jersey.server.internal"
+                Unresolved requirement: Import-Package: org.glassfish.jersey.server.internal; version="[2.30.1,2.31.0)"
+                  -> Export-Package: org.glassfish.jersey.server.internal; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="javax.annotation,javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.internal.util,org.glassfish.jersey.message.internal,org.glassfish.jersey.model,org.glassfish.jersey.model.internal,org.glassfish.jersey.server,org.glassfish.jersey.server.model,org.glassfish.jersey.server.spi"
+                Unresolved requirement: Import-Package: org.glassfish.jersey.server.spi; version="[2.30.1,3.0.0)"
+                  -> Export-Package: org.glassfish.jersey.server.spi; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.validation,javax.ws.rs,javax.ws.rs.core,org.glassfish.jersey.internal.inject,org.glassfish.jersey.server,org.glassfish.jersey.server.model,org.glassfish.jersey.spi"
+         Unresolved requirement: Import-Package: org.glassfish.jersey.servlet.spi; version="[2.30.1,3.0.0)"
+           -> Export-Package: org.glassfish.jersey.servlet.spi; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.servlet,javax.servlet.http"
+         Unresolved requirement: Import-Package: org.glassfish.jersey.servlet.internal; version="[2.30.1,2.31.0)"
+           -> Export-Package: org.glassfish.jersey.servlet.internal; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="javax.servlet,javax.servlet.http,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.server,org.glassfish.jersey.server.spi,org.glassfish.jersey.servlet.internal.spi,org.glassfish.jersey.servlet.spi"
+         Unresolved requirement: Import-Package: org.glassfish.jersey.servlet.internal.spi; version="[2.30.1,2.31.0)"
+           -> Export-Package: org.glassfish.jersey.servlet.internal.spi; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="javax.servlet,javax.servlet.http,org.glassfish.jersey.server,org.glassfish.jersey.server.spi"
+         Unresolved requirement: Import-Package: org.glassfish.jersey.server; version="[2.30.1,3.0.0)"
+           -> Export-Package: org.glassfish.jersey.server; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.message,org.glassfish.jersey.message.internal,org.glassfish.jersey.server.internal,org.glassfish.jersey.server.internal.inject,org.glassfish.jersey.server.internal.process,org.glassfish.jersey.server.model,org.glassfish.jersey.server.spi,org.glassfish.jersey.server.spi.internal,org.glassfish.jersey.uri"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.eclipse.linuxtools.docker.core [osgi.identity; type="osgi.bundle"; version:Version="5.11.0.202306052033"; osgi.identity="org.eclipse.linuxtools.docker.core"; singleton:="true"] because it is exposed to package 'org.glassfish.jersey.internal.l10n' from resources org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.40.0"; osgi.identity="org.glassfish.jersey.core.jersey-common"] and org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.core.jersey-common"] via two dependency chains.
+
+Chain 1:
+  org.eclipse.linuxtools.docker.core [osgi.identity; type="osgi.bundle"; version:Version="5.11.0.202306052033"; osgi.identity="org.eclipse.linuxtools.docker.core"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.glassfish.jersey.core.jersey-common)(bundle-version>=2.30.1))
+     |
+    provide: osgi.wiring.bundle: org.glassfish.jersey.core.jersey-common
+  org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.40.0"; osgi.identity="org.glassfish.jersey.core.jersey-common"]
+
+Chain 2:
+  org.eclipse.linuxtools.docker.core [osgi.identity; type="osgi.bundle"; version:Version="5.11.0.202306052033"; osgi.identity="org.eclipse.linuxtools.docker.core"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.glassfish.jersey.containers.servlet)(bundle-version>=2.3.0.1))
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="2.30.1.v20221112-0806"; osgi.wiring.bundle="org.glassfish.jersey.containers.servlet"
+  org.glassfish.jersey.containers.servlet [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.containers.servlet"]
+    import: (&(osgi.wiring.package=org.glassfish.jersey.internal.l10n)(&(version>=2.30.1)(!(version>=2.31.0))))
+     |
+    export: osgi.wiring.package: org.glassfish.jersey.internal.l10n
+  org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.core.jersey-common"]
+	at org.eclipse.osgi.container.Module.start(Module.java:463)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1852)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1845)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1786)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1750)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1672)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.eclipse.linuxtools.docker.ui 4 0 2024-12-07 20:41:46.748
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.linuxtools.docker.ui [1164]
+  Unresolved requirement: Require-Bundle: org.eclipse.linuxtools.docker.core; bundle-version="1.0.0"
+    -> Bundle-SymbolicName: org.eclipse.linuxtools.docker.core; bundle-version="5.11.0.202306052033"; singleton:="true"
+       org.eclipse.linuxtools.docker.core [1161]
+         Unresolved requirement: Require-Bundle: org.glassfish.jersey.containers.servlet; bundle-version="2.3.0.1"
+           -> Bundle-SymbolicName: org.glassfish.jersey.containers.servlet; bundle-version="2.30.1.v20221112-0806"
+              org.glassfish.jersey.containers.servlet [1191]
+                Unresolved requirement: Import-Package: org.glassfish.jersey.servlet; version="[2.30.1,3.0.0)"
+                  -> Export-Package: org.glassfish.jersey.servlet; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.servlet,javax.servlet.http,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.server,org.glassfish.jersey.server.spi"
+                     org.glassfish.jersey.containers.servlet.core [1192]
+                       Unresolved requirement: Import-Package: org.glassfish.jersey.server; version="[2.30.1,3.0.0)"
+                         -> Export-Package: org.glassfish.jersey.server; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.message,org.glassfish.jersey.message.internal,org.glassfish.jersey.server.internal,org.glassfish.jersey.server.internal.inject,org.glassfish.jersey.server.internal.process,org.glassfish.jersey.server.model,org.glassfish.jersey.server.spi,org.glassfish.jersey.server.spi.internal,org.glassfish.jersey.uri"
+                            org.glassfish.jersey.core.jersey-server [1197]
+                              Unresolved requirement: Import-Package: javax.validation; version="[2.0.0,3.0.0)"; resolution:="optional"
+                       Unresolved requirement: Import-Package: org.glassfish.jersey.server.internal.scanning; version="[2.30.1,2.31.0)"
+                         -> Export-Package: org.glassfish.jersey.server.internal.scanning; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="org.glassfish.jersey.server,org.glassfish.jersey.server.internal"
+                       Unresolved requirement: Import-Package: org.glassfish.jersey.server.internal; version="[2.30.1,2.31.0)"
+                         -> Export-Package: org.glassfish.jersey.server.internal; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="javax.annotation,javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.internal.util,org.glassfish.jersey.message.internal,org.glassfish.jersey.model,org.glassfish.jersey.model.internal,org.glassfish.jersey.server,org.glassfish.jersey.server.model,org.glassfish.jersey.server.spi"
+                       Unresolved requirement: Import-Package: org.glassfish.jersey.server.spi; version="[2.30.1,3.0.0)"
+                         -> Export-Package: org.glassfish.jersey.server.spi; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.validation,javax.ws.rs,javax.ws.rs.core,org.glassfish.jersey.internal.inject,org.glassfish.jersey.server,org.glassfish.jersey.server.model,org.glassfish.jersey.spi"
+                Unresolved requirement: Import-Package: org.glassfish.jersey.servlet.spi; version="[2.30.1,3.0.0)"
+                  -> Export-Package: org.glassfish.jersey.servlet.spi; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.servlet,javax.servlet.http"
+                Unresolved requirement: Import-Package: org.glassfish.jersey.servlet.internal; version="[2.30.1,2.31.0)"
+                  -> Export-Package: org.glassfish.jersey.servlet.internal; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="javax.servlet,javax.servlet.http,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.server,org.glassfish.jersey.server.spi,org.glassfish.jersey.servlet.internal.spi,org.glassfish.jersey.servlet.spi"
+                Unresolved requirement: Import-Package: org.glassfish.jersey.servlet.internal.spi; version="[2.30.1,2.31.0)"
+                  -> Export-Package: org.glassfish.jersey.servlet.internal.spi; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="javax.servlet,javax.servlet.http,org.glassfish.jersey.server,org.glassfish.jersey.server.spi"
+                Unresolved requirement: Import-Package: org.glassfish.jersey.server; version="[2.30.1,3.0.0)"
+                  -> Export-Package: org.glassfish.jersey.server; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.message,org.glassfish.jersey.message.internal,org.glassfish.jersey.server.internal,org.glassfish.jersey.server.internal.inject,org.glassfish.jersey.server.internal.process,org.glassfish.jersey.server.model,org.glassfish.jersey.server.spi,org.glassfish.jersey.server.spi.internal,org.glassfish.jersey.uri"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.eclipse.linuxtools.docker.core [osgi.identity; type="osgi.bundle"; version:Version="5.11.0.202306052033"; osgi.identity="org.eclipse.linuxtools.docker.core"; singleton:="true"] because it is exposed to package 'org.glassfish.jersey.internal.l10n' from resources org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.40.0"; osgi.identity="org.glassfish.jersey.core.jersey-common"] and org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.core.jersey-common"] via two dependency chains.
+
+Chain 1:
+  org.eclipse.linuxtools.docker.core [osgi.identity; type="osgi.bundle"; version:Version="5.11.0.202306052033"; osgi.identity="org.eclipse.linuxtools.docker.core"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.glassfish.jersey.core.jersey-common)(bundle-version>=2.30.1))
+     |
+    provide: osgi.wiring.bundle: org.glassfish.jersey.core.jersey-common
+  org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.40.0"; osgi.identity="org.glassfish.jersey.core.jersey-common"]
+
+Chain 2:
+  org.eclipse.linuxtools.docker.core [osgi.identity; type="osgi.bundle"; version:Version="5.11.0.202306052033"; osgi.identity="org.eclipse.linuxtools.docker.core"; singleton:="true"]
+    require: (&(osgi.wiring.bundle=org.glassfish.jersey.containers.servlet)(bundle-version>=2.3.0.1))
+     |
+    provide: osgi.wiring.bundle; bundle-version:Version="2.30.1.v20221112-0806"; osgi.wiring.bundle="org.glassfish.jersey.containers.servlet"
+  org.glassfish.jersey.containers.servlet [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.containers.servlet"]
+    import: (&(osgi.wiring.package=org.glassfish.jersey.internal.l10n)(&(version>=2.30.1)(!(version>=2.31.0))))
+     |
+    export: osgi.wiring.package: org.glassfish.jersey.internal.l10n
+  org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.core.jersey-common"]
+	at org.eclipse.osgi.container.Module.start(Module.java:463)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1852)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1845)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1786)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1750)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1672)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.glassfish.jersey.containers.servlet 4 0 2024-12-07 20:41:46.827
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.glassfish.jersey.containers.servlet [1191]
+  Unresolved requirement: Import-Package: org.glassfish.jersey.servlet; version="[2.30.1,3.0.0)"
+    -> Export-Package: org.glassfish.jersey.servlet; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.servlet,javax.servlet.http,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.server,org.glassfish.jersey.server.spi"
+       org.glassfish.jersey.containers.servlet.core [1192]
+         Unresolved requirement: Import-Package: org.glassfish.jersey.server; version="[2.30.1,3.0.0)"
+           -> Export-Package: org.glassfish.jersey.server; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.message,org.glassfish.jersey.message.internal,org.glassfish.jersey.server.internal,org.glassfish.jersey.server.internal.inject,org.glassfish.jersey.server.internal.process,org.glassfish.jersey.server.model,org.glassfish.jersey.server.spi,org.glassfish.jersey.server.spi.internal,org.glassfish.jersey.uri"
+              org.glassfish.jersey.core.jersey-server [1197]
+                Unresolved requirement: Import-Package: javax.validation; version="[2.0.0,3.0.0)"; resolution:="optional"
+         Unresolved requirement: Import-Package: org.glassfish.jersey.server.internal.scanning; version="[2.30.1,2.31.0)"
+           -> Export-Package: org.glassfish.jersey.server.internal.scanning; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="org.glassfish.jersey.server,org.glassfish.jersey.server.internal"
+         Unresolved requirement: Import-Package: org.glassfish.jersey.server.internal; version="[2.30.1,2.31.0)"
+           -> Export-Package: org.glassfish.jersey.server.internal; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="javax.annotation,javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.internal.util,org.glassfish.jersey.message.internal,org.glassfish.jersey.model,org.glassfish.jersey.model.internal,org.glassfish.jersey.server,org.glassfish.jersey.server.model,org.glassfish.jersey.server.spi"
+         Unresolved requirement: Import-Package: org.glassfish.jersey.server.spi; version="[2.30.1,3.0.0)"
+           -> Export-Package: org.glassfish.jersey.server.spi; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.validation,javax.ws.rs,javax.ws.rs.core,org.glassfish.jersey.internal.inject,org.glassfish.jersey.server,org.glassfish.jersey.server.model,org.glassfish.jersey.spi"
+  Unresolved requirement: Import-Package: org.glassfish.jersey.servlet.spi; version="[2.30.1,3.0.0)"
+    -> Export-Package: org.glassfish.jersey.servlet.spi; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.servlet,javax.servlet.http"
+  Unresolved requirement: Import-Package: org.glassfish.jersey.servlet.internal; version="[2.30.1,2.31.0)"
+    -> Export-Package: org.glassfish.jersey.servlet.internal; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="javax.servlet,javax.servlet.http,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.server,org.glassfish.jersey.server.spi,org.glassfish.jersey.servlet.internal.spi,org.glassfish.jersey.servlet.spi"
+  Unresolved requirement: Import-Package: org.glassfish.jersey.servlet.internal.spi; version="[2.30.1,2.31.0)"
+    -> Export-Package: org.glassfish.jersey.servlet.internal.spi; bundle-symbolic-name="org.glassfish.jersey.containers.servlet.core"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="javax.servlet,javax.servlet.http,org.glassfish.jersey.server,org.glassfish.jersey.server.spi"
+  Unresolved requirement: Import-Package: org.glassfish.jersey.server; version="[2.30.1,3.0.0)"
+    -> Export-Package: org.glassfish.jersey.server; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.message,org.glassfish.jersey.message.internal,org.glassfish.jersey.server.internal,org.glassfish.jersey.server.internal.inject,org.glassfish.jersey.server.internal.process,org.glassfish.jersey.server.model,org.glassfish.jersey.server.spi,org.glassfish.jersey.server.spi.internal,org.glassfish.jersey.uri"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.glassfish.jersey.containers.servlet [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.containers.servlet"] because it is exposed to package 'org.glassfish.jersey.internal.l10n' from resources org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.core.jersey-common"] and org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.40.0"; osgi.identity="org.glassfish.jersey.core.jersey-common"] via two dependency chains.
+
+Chain 1:
+  org.glassfish.jersey.containers.servlet [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.containers.servlet"]
+    import: (&(osgi.wiring.package=org.glassfish.jersey.internal.l10n)(&(version>=2.30.1)(!(version>=2.31.0))))
+     |
+    export: osgi.wiring.package: org.glassfish.jersey.internal.l10n
+  org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.core.jersey-common"]
+
+Chain 2:
+  org.glassfish.jersey.containers.servlet [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.containers.servlet"]
+    import: (&(osgi.wiring.package=org.glassfish.jersey.servlet.internal)(&(version>=2.30.1)(!(version>=2.31.0))))
+     |
+    export: osgi.wiring.package=org.glassfish.jersey.servlet.internal; uses:=org.glassfish.jersey.server
+  org.glassfish.jersey.containers.servlet.core [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.containers.servlet.core"]
+    import: (&(osgi.wiring.package=org.glassfish.jersey.server)(&(version>=2.30.1)(!(version>=3.0.0))))
+     |
+    export: osgi.wiring.package=org.glassfish.jersey.server; uses:=org.glassfish.jersey
+  org.glassfish.jersey.core.jersey-server [osgi.identity; type="osgi.bundle"; version:Version="2.40.0"; osgi.identity="org.glassfish.jersey.core.jersey-server"]
+    import: (&(osgi.wiring.package=org.glassfish.jersey)(&(version>=2.40.0)(!(version>=3.0.0))))
+     |
+    export: osgi.wiring.package: org.glassfish.jersey; uses:=org.glassfish.jersey.internal.l10n
+    export: osgi.wiring.package=org.glassfish.jersey.internal.l10n
+  org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.40.0"; osgi.identity="org.glassfish.jersey.core.jersey-common"]
+	at org.eclipse.osgi.container.Module.start(Module.java:463)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1852)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1845)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1786)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1750)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1672)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.glassfish.jersey.containers.servlet.core 4 0 2024-12-07 20:41:47.009
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.glassfish.jersey.containers.servlet.core [1192]
+  Unresolved requirement: Import-Package: org.glassfish.jersey.server; version="[2.30.1,3.0.0)"
+    -> Export-Package: org.glassfish.jersey.server; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.message,org.glassfish.jersey.message.internal,org.glassfish.jersey.server.internal,org.glassfish.jersey.server.internal.inject,org.glassfish.jersey.server.internal.process,org.glassfish.jersey.server.model,org.glassfish.jersey.server.spi,org.glassfish.jersey.server.spi.internal,org.glassfish.jersey.uri"
+       org.glassfish.jersey.core.jersey-server [1197]
+         Unresolved requirement: Import-Package: javax.validation; version="[2.0.0,3.0.0)"; resolution:="optional"
+  Unresolved requirement: Import-Package: org.glassfish.jersey.server.internal.scanning; version="[2.30.1,2.31.0)"
+    -> Export-Package: org.glassfish.jersey.server.internal.scanning; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="org.glassfish.jersey.server,org.glassfish.jersey.server.internal"
+  Unresolved requirement: Import-Package: org.glassfish.jersey.server.internal; version="[2.30.1,2.31.0)"
+    -> Export-Package: org.glassfish.jersey.server.internal; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; x-internal:="true"; uses:="javax.annotation,javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.internal.util,org.glassfish.jersey.message.internal,org.glassfish.jersey.model,org.glassfish.jersey.model.internal,org.glassfish.jersey.server,org.glassfish.jersey.server.model,org.glassfish.jersey.server.spi"
+  Unresolved requirement: Import-Package: org.glassfish.jersey.server.spi; version="[2.30.1,3.0.0)"
+    -> Export-Package: org.glassfish.jersey.server.spi; bundle-symbolic-name="org.glassfish.jersey.core.jersey-server"; bundle-version="2.30.1.v20221112-0806"; version="2.30.1"; uses:="javax.validation,javax.ws.rs,javax.ws.rs.core,org.glassfish.jersey.internal.inject,org.glassfish.jersey.server,org.glassfish.jersey.server.model,org.glassfish.jersey.spi"
+  Bundle was not resolved because of a uses constraint violation.
+  org.apache.felix.resolver.reason.ReasonException: Uses constraint violation. Unable to resolve resource org.glassfish.jersey.containers.servlet.core [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.containers.servlet.core"] because it is exposed to package 'org.glassfish.jersey.internal' from resources org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.core.jersey-common"] and org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.40.0"; osgi.identity="org.glassfish.jersey.core.jersey-common"] via two dependency chains.
+
+Chain 1:
+  org.glassfish.jersey.containers.servlet.core [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.containers.servlet.core"]
+    import: (&(osgi.wiring.package=org.glassfish.jersey.internal)(&(version>=2.30.1)(!(version>=2.31.0))))
+     |
+    export: osgi.wiring.package: org.glassfish.jersey.internal
+  org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.core.jersey-common"]
+
+Chain 2:
+  org.glassfish.jersey.containers.servlet.core [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.containers.servlet.core"]
+    import: (&(osgi.wiring.package=org.glassfish.jersey.server.internal)(&(version>=2.30.1)(!(version>=2.31.0))))
+     |
+    export: osgi.wiring.package=org.glassfish.jersey.server.internal; uses:=org.glassfish.jersey.server
+  org.glassfish.jersey.core.jersey-server [osgi.identity; type="osgi.bundle"; version:Version="2.30.1.v20221112-0806"; osgi.identity="org.glassfish.jersey.core.jersey-server"]
+    import: (&(osgi.wiring.package=org.glassfish.jersey.server)(&(version>=2.30.0)(!(version>=3.0.0))))
+     |
+    export: osgi.wiring.package=org.glassfish.jersey.server; uses:=org.glassfish.jersey
+  org.glassfish.jersey.core.jersey-server [osgi.identity; type="osgi.bundle"; version:Version="2.40.0"; osgi.identity="org.glassfish.jersey.core.jersey-server"]
+    import: (&(osgi.wiring.package=org.glassfish.jersey)(&(version>=2.40.0)(!(version>=3.0.0))))
+     |
+    export: osgi.wiring.package: org.glassfish.jersey; uses:=org.glassfish.jersey.internal
+    export: osgi.wiring.package=org.glassfish.jersey.internal
+  org.glassfish.jersey.core.jersey-common [osgi.identity; type="osgi.bundle"; version:Version="2.40.0"; osgi.identity="org.glassfish.jersey.core.jersey-common"]
+	at org.eclipse.osgi.container.Module.start(Module.java:463)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:1852)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:136)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1845)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:1786)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:1750)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1672)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:234)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:345)
+
+!ENTRY org.eclipse.jface 2 0 2024-12-07 20:41:55.706
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2024-12-07 20:41:55.706
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		WorkbenchHandlerServiceHandler("org.eclipse.jdt.ui.navigate.open.type"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		WorkbenchHandlerServiceHandler("org.eclipse.lsp4e.symbolinworkspace"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2024-12-07 20:42:01.793
+!MESSAGE Command list starting LS: org.springframework.tooling.boot.ls
+START:
+C:\Program Files\Java\jdk-21\bin\javaw.exe
+-cp
+C:\Users\ponom\eclipse\jee-2023-06\eclipse\..\..\..\.p2\pool\plugins\org.springframework.tooling.boot.ls_1.50.0.202310252332\servers\spring-boot-language-server\BOOT-INF\classes;C:\Users\ponom\eclipse\jee-2023-06\eclipse\..\..\..\.p2\pool\plugins\org.springframework.tooling.boot.ls_1.50.0.202310252332\servers\spring-boot-language-server\BOOT-INF\lib\*
+-Dsts.lsp.client=eclipse
+-Dlsp.completions.indentation.enable=true
+-Xmx1024m
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:TieredStopAtLevel=1
+-Xlog:jni+resolve=off
+-Dspring.config.location=file:C:\Users\ponom\eclipse\jee-2023-06\eclipse\..\..\..\.p2\pool\plugins\org.springframework.tooling.boot.ls_1.50.0.202310252332\servers\spring-boot-language-server\BOOT-INF\classes\application.properties
+-XX:ErrorFile=C:/Projs/Java/.metadata/.plugins/org.springframework.tooling.boot.ls/fatal-error-spring-boot_1733600521792
+org.springframework.ide.vscode.boot.app.BootLanguageServerBootApp
+--languageserver.hover-timeout=225
+END
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-07 20:42:01.795
+!MESSAGE DelegatingStreamConnectionProvider - Starting Boot LS
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2024-12-07 20:42:01.815
+!MESSAGE Started org.springframework.tooling.boot.ls LS process 2172
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-12-07 20:42:04.515
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\ponom'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-07 20:42:04.932
+!MESSAGE Boot project ADDED: spring-mvc-app1
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-07 20:42:04.934
+!MESSAGE Starting Boot LS...
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-07 20:42:04.936
+!MESSAGE Started Boot LS process
+
+!ENTRY org.springsource.ide.eclipse.commons.core 4 0 2024-12-07 20:43:04.354
+!MESSAGE Internal Error
+!STACK 1
+Java Model Exception: Error in Java Model (code 969): Servers does not exist
+	at org.eclipse.jdt.internal.core.JavaElement.newNotPresentException(JavaElement.java:574)
+	at org.eclipse.jdt.internal.core.JavaModelManager.getPerProjectInfoCheckExistence(JavaModelManager.java:2504)
+	at org.eclipse.jdt.internal.core.JavaProject.getPerProjectInfo(JavaProject.java:2444)
+	at org.eclipse.jdt.internal.core.JavaProject.getResolvedClasspath(JavaProject.java:2542)
+	at org.springframework.tooling.boot.ls.BootProjectTester.isProjectWithDependency(BootProjectTester.java:71)
+	at org.springframework.tooling.boot.ls.BootProjectTester.test(BootProjectTester.java:58)
+	at org.eclipse.core.internal.expressions.Property.test(Property.java:65)
+	at org.eclipse.core.expressions.TestExpression.evaluate(TestExpression.java:107)
+	at org.eclipse.core.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:54)
+	at org.eclipse.core.expressions.AndExpression.evaluate(AndExpression.java:36)
+	at org.eclipse.core.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:54)
+	at org.eclipse.core.internal.expressions.AdaptExpression.evaluate(AdaptExpression.java:121)
+	at org.eclipse.core.expressions.CompositeExpression.evaluateOr(CompositeExpression.java:68)
+	at org.eclipse.core.expressions.OrExpression.evaluate(OrExpression.java:26)
+	at org.eclipse.core.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:54)
+	at org.eclipse.core.internal.expressions.IterateExpression.evaluate(IterateExpression.java:163)
+	at org.eclipse.core.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:54)
+	at org.eclipse.core.expressions.AndExpression.evaluate(AndExpression.java:36)
+	at org.eclipse.e4.ui.internal.workbench.ContributionsAnalyzer.isCoreExpressionVisible(ContributionsAnalyzer.java:281)
+	at org.eclipse.e4.ui.internal.workbench.ContributionsAnalyzer.isVisible(ContributionsAnalyzer.java:255)
+	at org.eclipse.e4.ui.workbench.renderers.swt.ContributionRecord.computeVisibility(ContributionRecord.java:170)
+	at org.eclipse.e4.ui.workbench.renderers.swt.ContributionRecord.updateVisibility(ContributionRecord.java:101)
+	at org.eclipse.e4.ui.workbench.renderers.swt.MenuManagerRendererFilter.updateElementVisibility(MenuManagerRendererFilter.java:191)
+	at org.eclipse.e4.ui.workbench.renderers.swt.MenuManagerRendererFilter.updateElementVisibility(MenuManagerRendererFilter.java:202)
+	at org.eclipse.e4.ui.workbench.renderers.swt.MenuManagerShowProcessor.showMenu(MenuManagerShowProcessor.java:256)
+	at org.eclipse.e4.ui.workbench.renderers.swt.MenuManagerShowProcessor.menuAboutToHide(MenuManagerShowProcessor.java:114)
+	at org.eclipse.jface.internal.MenuManagerEventHelper.showEventPostHelper(MenuManagerEventHelper.java:95)
+	at org.eclipse.jface.action.MenuManager.handleAboutToShow(MenuManager.java:469)
+	at org.eclipse.jface.action.MenuManager$2.menuShown(MenuManager.java:495)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:259)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:89)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4274)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1066)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1090)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1071)
+	at org.eclipse.swt.widgets.Control.WM_INITMENUPOPUP(Control.java:5140)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4772)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:340)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1478)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2306)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5040)
+	at org.eclipse.swt.internal.win32.OS.TrackPopupMenu(Native Method)
+	at org.eclipse.swt.widgets.Menu._setVisible(Menu.java:237)
+	at org.eclipse.swt.widgets.Display.runPopups(Display.java:4113)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3654)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1155)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1046)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:155)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:643)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:338)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:550)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:171)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:152)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:136)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:402)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:596)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1467)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1440)
+!SUBENTRY 1 org.eclipse.jdt.core 4 969 2024-12-07 20:43:04.355
+!MESSAGE Servers does not exist
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-07 20:45:17.254
+!MESSAGE Classpath changed for project: spring-mvc-app1
+
+!ENTRY org.springframework.tooling.boot.ls 1 0 2024-12-07 20:45:18.687
+!MESSAGE Classpath changed for project: spring-mvc-app1
+
+!ENTRY org.eclipse.wildwebdeveloper.xml 2 0 2024-12-07 20:45:18.942
+!MESSAGE The given URI https://jakarta.ee/xml/ns/jakartaee/application-client_9.xsd from org.eclipse.jst.standard.schemas could not be resolved for local access
+
+!ENTRY org.eclipse.wildwebdeveloper.xml 2 0 2024-12-07 20:45:19.083
+!MESSAGE The given URI https://jakarta.ee/xml/ns/jakartaee/jobXML_2_0.xsd from org.eclipse.jst.standard.schemas could not be resolved for local access
+
+!ENTRY org.eclipse.wildwebdeveloper.xml 2 0 2024-12-07 20:45:19.134
+!MESSAGE The given URI https://jakarta.ee/xml/ns/jakartaee/beans_3_0.xsd from org.eclipse.jst.standard.schemas could not be resolved for local access
+
+!ENTRY org.eclipse.wildwebdeveloper.xml 2 0 2024-12-07 20:45:19.136
+!MESSAGE The given URI https://jakarta.ee/xml/ns/jaxb/bindingschema_3_0.xsd from org.eclipse.jst.standard.schemas could not be resolved for local access
+
+!ENTRY org.eclipse.wildwebdeveloper.xml 2 0 2024-12-07 20:45:19.154
+!MESSAGE The given URI https://jakarta.ee/xml/ns/validation/validation-configuration-3.0.xsd from org.eclipse.jst.standard.schemas could not be resolved for local access
+
+!ENTRY org.eclipse.wildwebdeveloper.xml 2 0 2024-12-07 20:45:19.164
+!MESSAGE The given URI http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_1.xsd from org.eclipse.jst.standard.schemas could not be resolved for local access
+
+!ENTRY org.eclipse.jface 2 0 2024-12-07 20:46:42.354
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2024-12-07 20:46:42.354
+!MESSAGE A conflict occurred for CTRL+SHIFT+C:
+Binding(CTRL+SHIFT+C,
+	ParameterizedCommand(Command(org.eclipse.tm4e.languageconfiguration.toggleLineCommentCommand,Toggle Line Comment,
+		,
+		Category(org.eclipse.tm4e.languageconfiguration.category,TM4E Language Configuration,null,true),
+		WorkbenchHandlerServiceHandler("org.eclipse.tm4e.languageconfiguration.toggleLineCommentCommand"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.textEditorScope,,,system)
+Binding(CTRL+SHIFT+C,
+	ParameterizedCommand(Command(org.springframework.tooling.boot.ls.ToggleComment,Toggle Comment,
+		,
+		Category(org.springframework.ide.eclipse.commands,Spring Generic Text Editor,Spring Language Server Commands,true),
+		WorkbenchHandlerServiceHandler("org.springframework.tooling.boot.ls.ToggleComment"),
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.textEditorScope,,,system)

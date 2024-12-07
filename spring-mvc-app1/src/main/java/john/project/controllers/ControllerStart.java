@@ -15,6 +15,11 @@ public class ControllerStart {
         this.DAO = DAO;
     }
 	
+    @GetMapping("/")
+    public String startPage() {
+        return "start/hello";
+    }
+    
     @GetMapping("/hello")
     public String helloPage() {
         return "start/hello";
