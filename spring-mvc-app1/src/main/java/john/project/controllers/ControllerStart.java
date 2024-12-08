@@ -55,5 +55,4 @@ public class ControllerStart {
 			return "start/login";
 		}
 	}
-
 }
