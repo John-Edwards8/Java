@@ -1,7 +1,6 @@
 package john.project.controllers;
 
-import java.util.UUID;
-
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,7 +25,8 @@ public class ControllerAdmin {
     private final OrderListDAO orderListDAO;
     private final CacheManager cache = new CacheManager();
 	
-    public ControllerAdmin(ClientDAO clientDAO, OrderDAO orderDAO, OrderListDAO orderListDAO) {
+    public ControllerAdmin(@Qualifier("realClientDAO")ClientDAO clientDAO,
+    		OrderDAO orderDAO,@Qualifier("realOrderListDAO") OrderListDAO orderListDAO) {
         this.clientDAO = clientDAO;
         this.orderDAO = orderDAO;
         this.orderListDAO = orderListDAO;
@@ -196,23 +196,14 @@ public class ControllerAdmin {
         return "redirect:/admin/clients";
     }
     
-    
-    //Cookie makers
     @GetMapping("/exit")
-    public String exitPage(HttpServletResponse response, @CookieValue(name = "auth_cookie", required = false) Cookie adminCookie) {
-    	if (adminCookie != null) {
-    		adminCookie.setMaxAge(0);
-    		response.addCookie(adminCookie);
-    	}
-
-    	return "redirect:/hello";
-    }
-    
-    @GetMapping("/setcookie")
-    public String setCookie(HttpServletResponse response) {
-    	Cookie cookie = new Cookie("auth_cookie", UUID.randomUUID().toString());
-    	cookie.setMaxAge(3600*24*7);
-    	response.addCookie(cookie);
-        return "redirect:/admin/";
+    public String exitPage(HttpServletResponse response, @CookieValue(name = "auth_cookie", required = false) Cookie cookie) {
+        if (cookie != null) {
+            cookie.setMaxAge(0);
+            cookie.setPath("/");
+            cookie.setDomain("localhost");
+            response.addCookie(cookie);
+        }
+        return "redirect:/";
     }
 }

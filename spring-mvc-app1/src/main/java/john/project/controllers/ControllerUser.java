@@ -1,7 +1,6 @@
 package john.project.controllers;
 
-import java.util.UUID;
-
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,14 +17,19 @@ import john.project.models.OrderForm;
 @Controller
 @RequestMapping("/user")
 public class ControllerUser {
+	Client client;
     private final OrderListDAO orderListDAO;
-	
-    public ControllerUser(OrderListDAO orderListDAO) {
-        this.orderListDAO = orderListDAO;
+    
+    public ControllerUser(@Qualifier("proxyOrderListDAO") OrderListDAO targetDAO) {
+        this.orderListDAO = targetDAO;
     }
     
     @GetMapping("/")
-    public String helloPage() {
+    public String helloPage(HttpSession session) {
+    	this.client = (Client) session.getAttribute("current_client");
+        if (this.client == null) {
+            throw new IllegalStateException("No current_client found in session.");
+        }
         return "user/hello";
     }
     
@@ -33,8 +37,7 @@ public class ControllerUser {
      *CRUD-system */
     //Read-all
     @GetMapping("/orders")
-    public String ordersPage(HttpSession session, Model model) {
-    	Client client = (Client) session.getAttribute("current_client");
+    public String ordersPage(Model model) {
     	model.addAttribute("ordersList", orderListDAO.getOrderList(client.getId()));
         return "user/orders";
     }
@@ -45,7 +48,7 @@ public class ControllerUser {
     }
     //Create
     @PostMapping("/order")
-    public String addOrder(@ModelAttribute("order") OrderForm form, HttpSession session, BindingResult res) {
+    public String addOrder(@ModelAttribute("order") OrderForm form, BindingResult res) {
     	if (res.hasErrors())
             return "user/new";
     	Order order = new Order
@@ -54,27 +57,18 @@ public class ControllerUser {
     			.date(form.getDate())
     			.status("Pending")
     			.build();
-    	Client client = (Client) session.getAttribute("current_client");
     	orderListDAO.addOrderList(order,client.getId());
         return "redirect:/user/orders";
     }
     
-    //Cookie makers
     @GetMapping("/exit")
-    public String exitPage(HttpServletResponse response, @CookieValue(name = "auth_cookie", required = false) Cookie adminCookie) {
-    	if (adminCookie != null) {
-    		adminCookie.setMaxAge(0);
-    		response.addCookie(adminCookie);
-    	}
-
-    	return "redirect:/hello";
-    }
-    
-    @GetMapping("/setcookie")
-    public String setCookie(HttpServletResponse response) {
-    	Cookie cookie = new Cookie("auth_cookie", UUID.randomUUID().toString());
-    	cookie.setMaxAge(3600*24*7);
-    	response.addCookie(cookie);
-        return "redirect:/user/";
+    public String exitPage(HttpServletResponse response, @CookieValue(name = "auth_cookie", required = false) Cookie cookie) {
+        if (cookie != null) {
+            cookie.setMaxAge(0);
+            cookie.setPath("/");
+            cookie.setDomain("localhost");
+            response.addCookie(cookie);
+        }
+        return "redirect:/";
     }
 }

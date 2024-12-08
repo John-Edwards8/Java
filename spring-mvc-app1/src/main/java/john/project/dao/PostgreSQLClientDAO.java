@@ -121,28 +121,7 @@ public class PostgreSQLClientDAO implements ClientDAO {
 
         return client;
     }
-    
-    @Override
-    public boolean authenticate(String username, String password) {
-        String SQL = "SELECT client_email FROM clients WHERE client_email = ? AND client_password = ?";
         
-        try (PreparedStatement stmt = con.prepareStatement(SQL)) {
-            stmt.setString(1, username);
-            stmt.setString(2, password);
-
-            ResultSet resultSet = stmt.executeQuery();
-
-            if (resultSet.next()) {
-                return true;
-            }
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-
-        return false;
-    }
-    
     @Override
     public Client getClient(String username, String password) {
         String SQL = "SELECT * FROM clients WHERE client_email = ? AND client_password = ?";
@@ -172,6 +151,27 @@ public class PostgreSQLClientDAO implements ClientDAO {
         }
 
         return null;
+    }
+    
+    @Override
+    public boolean authenticate(String username, String password) {
+        String SQL = "SELECT client_email FROM clients WHERE client_email = ? AND client_password = ?";
+        
+        try (PreparedStatement stmt = con.prepareStatement(SQL)) {
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+
+            ResultSet resultSet = stmt.executeQuery();
+
+            if (resultSet.next()) {
+                return true;
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return false;
     }
 
 }

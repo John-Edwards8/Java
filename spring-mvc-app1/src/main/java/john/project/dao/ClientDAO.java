@@ -11,5 +11,5 @@ public interface ClientDAO {
     List<Client> getAllClients();
     Client getClient(int id);
     Client getClient(String username, String password);
-	boolean authenticate(String username, String password2);
+	boolean authenticate(String username, String password);
 }
