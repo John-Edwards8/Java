@@ -6,27 +6,48 @@ public class OrderList {
     private Client client;
     private Order order;
     
+    OrderList(OrderListBuilder builder) {
+		this.client=builder.client;
+		this.order=builder.order;
+	}
+    
 	public Client getClient() {
 		return client;
 	}
-
 	public Order getOrder() {
 		return order;
 	}
-	public void setClient(int newId, String name,String surname,String patronymic,String phoneNumber, String email) {
-		client = new Client();
-		client.setId(newId);
-		client.setName(name);	
-		client.setSurname(surname);		
-		client.setPatronymic(patronymic);
-		client.setPhoneNumber(phoneNumber);
-		client.setEmail(email);
-	}
+	
+	public static class OrderListBuilder{
+	    private Client client;
+	    private Order order;
 
-	public void setOrder(int newId, Date date, String status) {
-		order = new Order();
-		order.setId(newId);
-		order.setDate(date);
-		order.setStatus(status);
+		public OrderListBuilder client(int id, String name,String surname,String patronymic,String phoneNumber, String email) {
+			this.client = new Client
+				.ClientBuilder()
+				.id(id)
+				.name(name)
+				.surname(surname)
+				.patronymic(patronymic)
+				.phoneNumber(phoneNumber)
+				.email(email)
+				.build();
+			return this;
+		}
+
+		public OrderListBuilder order(int id, Date date, String status) {
+			this.order = new Order
+				.OrderBuilder()
+				.id(id)
+				.date(date)
+				.status(status)
+				.build();
+			return this;
+		}
+		
+		public OrderList build(){
+			return new OrderList(this);
+		}
+
 	}
 }

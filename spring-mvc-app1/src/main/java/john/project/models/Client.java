@@ -1,24 +1,26 @@
 package john.project.models;
+
 import jakarta.validation.constraints.*;
 
-
 public class Client {
-	private int id;
+    @NotEmpty(message = "Id should not be empty")
+	private final int id;
 	
-
     @NotBlank(message = "Name should not be empty")
-    private String name;
+    private final String name;
 
     @NotBlank(message = "Surname should not be empty")
-    private String surname;
+    private final String surname;
 
-    private String patronymic;
+    private final String patronymic;
 
     @Pattern(regexp = "\\d{10}", message = "Phone number should include 10 numbers")
-    private String phoneNumber;
+    private final String phoneNumber;
 
     @Email(message = "Incorrect format")
-    private String email;
+    private final String email;
+    
+    private final String pass;
     
     public int getId() {
 		return id;
@@ -38,23 +40,74 @@ public class Client {
 	public String getEmail() {
 		return email;
 	}
-	public void setId(int newId) {
-		id = newId;
+	public String getPass() {
+		return pass;
 	}
-	public void setName(String string) {
-		name = string;	
+    
+	Client(ClientBuilder builder) {
+		this.id=builder.id;
+		this.name=builder.name;
+		this.surname=builder.surname;
+		this.patronymic=builder.patronymic;
+		this.phoneNumber=builder.phoneNumber;
+		this.email=builder.email;
+		this.pass=builder.pass;
 	}
-	public void setSurname(String string) {
-		surname = string;		
-	}
-	public void setPatronymic(String string) {
-		patronymic = string;		
-	}
-	public void setPhoneNumber(String string) {
-		phoneNumber = string;		
-	}
-	public void setEmail(String string) {
-		email = string;		
+	
+	
+
+	public static class ClientBuilder{
+		private int id;
+
+		@NotBlank(message = "Name should not be empty")
+	    private String name;
+
+	    @NotBlank(message = "Surname should not be empty")
+	    private String surname;
+
+	    private String patronymic;
+
+	    @Pattern(regexp = "\\d{10}", message = "Phone number should include 10 numbers")
+	    private String phoneNumber;
+
+	    @Email(message = "Incorrect format")
+	    private String email;
+	    
+	    private String pass;
+
+		public ClientBuilder id(int id2) {
+			this.id=id2;
+			return this;
+		}
+		public ClientBuilder name(String name2) {
+			this.name=name2;
+			return this;
+		}
+		public ClientBuilder surname(String surname2) {
+			this.surname=surname2;
+			return this;
+		}
+		public ClientBuilder patronymic(String patronymic2) {
+			this.patronymic=patronymic2;
+			return this;
+		}
+		public ClientBuilder phoneNumber(String phoneNumber2) {
+			this.phoneNumber=phoneNumber2;
+			return this;
+		}
+		public ClientBuilder email(String email2) {
+			this.email=email2;
+			return this;
+		}
+		public ClientBuilder pass(String pass2) {
+			this.pass=pass2;
+			return this;
+		}
+		
+		public Client build(){
+			return new Client(this);
+		}
+
 	}
 
 }

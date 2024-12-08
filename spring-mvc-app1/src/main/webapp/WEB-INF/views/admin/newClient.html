@@ -39,6 +39,11 @@
                 <input type="text" class="form-control" id="clientEmail" th:field="${client.email}" required>
                 <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">E-mail Error</div>
             </div>
+            <div class="mb-3">
+                <label for="clientPass">Password:</label>
+                <input type="text" class="form-control" id="clientPass" th:field="${client.pass}" required>
+                <div style="color:red" th:if="${#fields.hasErrors('pass')}" th:errors="*{pass}">Pass Error</div>
+            </div>
             <br/>
             <button type="submit" class="btn btn-primary">Add client</button>
         </form>
