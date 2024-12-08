@@ -89,6 +89,7 @@ public class ControllerAdmin {
         form.setPatronymic(client.getPatronymic());
         form.setPhoneNumber(client.getPhoneNumber());
         form.setEmail(client.getEmail());
+        form.setPass(client.getPass());
         cache.save("lastCli", form);
         return "admin/update";
     }
@@ -155,6 +156,7 @@ public class ControllerAdmin {
     			.patronymic(form.getPatronymic())
     			.phoneNumber(form.getPhoneNumber())
     			.email(form.getEmail())
+    			.pass(form.getPass())
     			.build();
     	
     	clientDAO.addClient(client);
@@ -181,6 +183,7 @@ public class ControllerAdmin {
     			.patronymic(form.getPatronymic())
     			.phoneNumber(form.getPhoneNumber())
     			.email(form.getEmail())
+    			.pass(form.getPass())
     			.build();
         
     	clientDAO.updateClient(id, client);

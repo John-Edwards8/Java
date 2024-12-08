@@ -20,6 +20,8 @@ public class Client {
     @Email(message = "Incorrect format")
     private final String email;
     
+    private final String pass;
+    
     public int getId() {
 		return id;
 	}
@@ -38,6 +40,9 @@ public class Client {
 	public String getEmail() {
 		return email;
 	}
+	public String getPass() {
+		return pass;
+	}
     
 	Client(ClientBuilder builder) {
 		this.id=builder.id;
@@ -46,8 +51,11 @@ public class Client {
 		this.patronymic=builder.patronymic;
 		this.phoneNumber=builder.phoneNumber;
 		this.email=builder.email;
+		this.pass=builder.pass;
 	}
 	
+	
+
 	public static class ClientBuilder{
 		private int id;
 
@@ -64,6 +72,8 @@ public class Client {
 
 	    @Email(message = "Incorrect format")
 	    private String email;
+	    
+	    private String pass;
 
 		public ClientBuilder id(int id2) {
 			this.id=id2;
@@ -87,6 +97,10 @@ public class Client {
 		}
 		public ClientBuilder email(String email2) {
 			this.email=email2;
+			return this;
+		}
+		public ClientBuilder pass(String pass2) {
+			this.pass=pass2;
 			return this;
 		}
 		

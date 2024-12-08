@@ -65,33 +65,34 @@ public class PostgreSQLOrderListDAO implements OrderListDAO {
     }
 
     @Override
-    public OrderList getOrderList(int id) {
-    	OrderList list = null;
+    public List<OrderList> getOrderList(int id) {
+    	List<OrderList> orderLists = new ArrayList<>();
         try {
             PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM clients c INNER JOIN orderlist ol ON c.client_id = ol.client_id\r\n"
             		+ "INNER JOIN orders o ON ol.order_id = o.order_id\r\n"
-            		+ "WHERE o.order_id = ?;");
+            		+ "WHERE c.client_id = ?;");
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            resultSet.next();
-                        
-            list = new OrderList.OrderListBuilder()
-            		.client(resultSet.getInt("client_id"),
-            				resultSet.getString("client_first_name"),
-            				resultSet.getString("client_second_name"),
-            				resultSet.getString("client_patronymic"),
-            				resultSet.getString("client_phone_number"),
-            				resultSet.getString("client_email"))
-            		.order(resultSet.getInt("order_id"),
-            			   resultSet.getDate("order_date"),
-            			   resultSet.getString("order_status"))
-            		.build();
+            while(resultSet.next()) {        
+            	OrderList list = new OrderList.OrderListBuilder()
+	            		.client(id,
+	            				resultSet.getString("client_first_name"),
+	            				resultSet.getString("client_second_name"),
+	            				resultSet.getString("client_patronymic"),
+	            				resultSet.getString("client_phone_number"),
+	            				resultSet.getString("client_email"))
+	            		.order(resultSet.getInt("order_id"),
+	            			   resultSet.getDate("order_date"),
+	            			   resultSet.getString("order_status"))
+	            		.build();
+            	orderLists.add(list);
+            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
-        return list;
+        return orderLists;
     }
 
     @Override

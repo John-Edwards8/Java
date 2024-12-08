@@ -24,8 +24,8 @@ public class PostgreSQLClientDAO implements ClientDAO {
 	@Override
     public void addClient(Client client) {
 		try {
-	        String SQL = "INSERT INTO clients (client_first_name, client_second_name, client_patronymic, client_phone_number, client_email)"
-	        		+ "VALUES('" + client.getName() + "', '" + client.getSurname() + "', '" + client.getPatronymic() + "', '" + client.getPhoneNumber() + "', '" + client.getEmail() + "')";
+	        String SQL = "INSERT INTO clients (client_first_name, client_second_name, client_patronymic, client_phone_number, client_email, client_password, client_role_id)"
+	        		+ "VALUES('" + client.getName() + "', '" + client.getSurname() + "', '" + client.getPatronymic() + "', '" + client.getPhoneNumber() + "', '" + client.getEmail() + "', '" + client.getPass() + "', 2)";
 			
 	        con.createStatement().executeUpdate(SQL);
 	    } catch (SQLException throwables) {
@@ -36,14 +36,15 @@ public class PostgreSQLClientDAO implements ClientDAO {
     @Override
     public void updateClient(int id, Client client) {
     	try {
-	        PreparedStatement preparedStatement = con.prepareStatement("UPDATE clients SET client_first_name = ?, client_second_name = ?, client_patronymic = ?, client_phone_number = ?, client_email = ? WHERE client_id = ?");
+	        PreparedStatement preparedStatement = con.prepareStatement("UPDATE clients SET client_first_name = ?, client_second_name = ?, client_patronymic = ?, client_phone_number = ?, client_email = ?, client_password = ? WHERE client_id = ?");
 	
 	        preparedStatement.setString(1, client.getName());
 	        preparedStatement.setString(2, client.getSurname());
 	        preparedStatement.setString(3, client.getPatronymic());
 	        preparedStatement.setString(4, client.getPhoneNumber());
 	        preparedStatement.setString(5, client.getEmail());
-	        preparedStatement.setInt(6, id);
+	        preparedStatement.setString(6, client.getPass());
+	        preparedStatement.setInt(7, id);
 	        preparedStatement.executeUpdate();
     	 } catch (SQLException throwables) {
              throwables.printStackTrace();
@@ -80,6 +81,7 @@ public class PostgreSQLClientDAO implements ClientDAO {
         				.patronymic(resultSet.getString("client_patronymic"))
         				.phoneNumber(resultSet.getString("client_phone_number"))
         				.email(resultSet.getString("client_email"))
+        				.pass(resultSet.getString("client_password"))
         				.build();
 
                 clients.add(client);
@@ -109,6 +111,7 @@ public class PostgreSQLClientDAO implements ClientDAO {
         				.patronymic(resultSet.getString("client_patronymic"))
         				.phoneNumber(resultSet.getString("client_phone_number"))
         				.email(resultSet.getString("client_email"))
+        				.pass(resultSet.getString("client_password"))
         				.build();
                 
             }
@@ -118,31 +121,57 @@ public class PostgreSQLClientDAO implements ClientDAO {
 
         return client;
     }
-
-
+    
     @Override
-	public boolean authenticate(String username, String password) {
-		String uname;
-		String pass;
-		
-		try {
-            String SQL = "SELECT client_email, client_password FROM clients;";
-            ResultSet resultSet = con.createStatement().executeQuery(SQL);
-            while(resultSet.next()) {
-            	uname = resultSet.getString("client_email");
-            	pass = resultSet.getString("client_password");
-				
-            	if(uname == username && pass == password) {
-            		return true;
-            	}
+    public boolean authenticate(String username, String password) {
+        String SQL = "SELECT client_email FROM clients WHERE client_email = ? AND client_password = ?";
+        
+        try (PreparedStatement stmt = con.prepareStatement(SQL)) {
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+
+            ResultSet resultSet = stmt.executeQuery();
+
+            if (resultSet.next()) {
+                return true;
             }
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
-		return false;
-	}
+        return false;
+    }
+    
+    @Override
+    public Client getClient(String username, String password) {
+        String SQL = "SELECT * FROM clients WHERE client_email = ? AND client_password = ?";
+        
+        try (PreparedStatement stmt = con.prepareStatement(SQL)) {
+            stmt.setString(1, username);
+            stmt.setString(2, password);
 
+            ResultSet resultSet = stmt.executeQuery();
+
+            if (resultSet.next()) {
+            	Client client = new Client
+        				.ClientBuilder()
+        				.id(resultSet.getInt("client_id"))
+        				.name(resultSet.getString("client_first_name"))
+        				.surname(resultSet.getString("client_second_name"))
+        				.patronymic(resultSet.getString("client_patronymic"))
+        				.phoneNumber(resultSet.getString("client_phone_number"))
+        				.email(resultSet.getString("client_email"))
+        				.pass(resultSet.getString("client_password"))
+        				.build();
+                return client;
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return null;
+    }
 
 }

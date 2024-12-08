@@ -23,6 +23,8 @@ public class ClientForm {
     @Email(message = "Incorrect format")
     private String email;
     
+    private String pass;
+    
     public int getId() { return id;	}
     public void setId(int id) { this.id = id; }
 	public String getName() { return name; }
@@ -35,4 +37,6 @@ public class ClientForm {
 	public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
 	public String getEmail() { return email; }
 	public void setEmail(String email) { this.email = email; }
+	public String getPass() { return pass; }
+	public void setPass(String pass) { this.pass = pass; }
 }

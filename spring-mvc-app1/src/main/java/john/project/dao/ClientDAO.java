@@ -9,7 +9,7 @@ public interface ClientDAO {
     void updateClient(int id, Client client);
     void deleteClient(int id);
     List<Client> getAllClients();
-    public Client getClient(int id);
-    
+    Client getClient(int id);
+    Client getClient(String username, String password);
 	boolean authenticate(String username, String password2);
 }
