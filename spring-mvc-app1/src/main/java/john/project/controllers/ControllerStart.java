@@ -5,14 +5,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import jakarta.servlet.http.HttpSession;
-import john.project.dao.PostgreSQLDAO;
+import john.project.dao.ClientDAO;
 
 @Controller
 public class ControllerStart {	
-	private final PostgreSQLDAO DAO;
+    private final ClientDAO clientDAO;
 
-    public ControllerStart(PostgreSQLDAO DAO) {
-        this.DAO = DAO;
+    public ControllerStart(ClientDAO clientDAO) {
+        this.clientDAO = clientDAO;
     }
 	
     @GetMapping("/")
@@ -48,7 +48,7 @@ public class ControllerStart {
     	if(username.equals("ADMIN") && password.equals("ADMIN")) {
     		session.setAttribute("adminLoggedIn", true);
             return check == true? "redirect:/admin/setcookie" : "redirect:/admin";
-    	} else if(DAO.authenticate(username, password)) {
+    	} else if(clientDAO.authenticate(username, password)) {
             session.setAttribute("userLoggedIn", true);
             return check == true? "redirect:/user/setcookie" : "redirect:/user";
         } else {

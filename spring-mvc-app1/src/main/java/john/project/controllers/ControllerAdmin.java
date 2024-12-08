@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
-import john.project.dao.PostgreSQLDAO;
+import john.project.dao.ClientDAO;
+import john.project.dao.OrderDAO;
+import john.project.dao.OrderListDAO;
 import john.project.models.Client;
 import john.project.models.ClientForm;
 import john.project.models.Order;
@@ -19,10 +21,15 @@ import john.project.models.OrderForm;
 @Controller
 @RequestMapping("/admin")
 public class ControllerAdmin {
-	private final PostgreSQLDAO DAO;
+    private final ClientDAO clientDAO;
+    private final OrderDAO orderDAO;
+    private final OrderListDAO orderListDAO;
+    private final CacheManager cache = new CacheManager();
 	
-    public ControllerAdmin(PostgreSQLDAO DAO) {
-        this.DAO = DAO;
+    public ControllerAdmin(ClientDAO clientDAO, OrderDAO orderDAO, OrderListDAO orderListDAO) {
+        this.clientDAO = clientDAO;
+        this.orderDAO = orderDAO;
+        this.orderListDAO = orderListDAO;
     }
     
     @GetMapping("/")
@@ -35,7 +42,7 @@ public class ControllerAdmin {
     //Read-all
     @GetMapping("/orders")
     public String ordersPage(Model model) {
-    	model.addAttribute("ordersList", DAO.getAllOrderLists());
+    	model.addAttribute("ordersList", orderListDAO.getAllOrderLists());
         return "admin/orders";
     }
     //Create form
@@ -48,33 +55,33 @@ public class ControllerAdmin {
     public String addOrder(@ModelAttribute("order") OrderForm order, BindingResult res) {
     	if (res.hasErrors())
             return "admin/new";
-        DAO.save("order",order);
+    	cache.save("order",order);
         return "redirect:/admin/addClient";
     }
     @GetMapping("/addClient")
     public String addClient(Model model) {
-    	model.addAttribute("clients", DAO.getAllClients());
+    	model.addAttribute("clients", clientDAO.getAllClients());
         return "admin/addCli";
     }
     @PostMapping("/orderlist")
     public String addOrderList(@RequestParam("clientId") int clientId) {
-    	OrderForm form = DAO.get("order");
-    	DAO.deleteOrder("order");
+    	OrderForm form = cache.get("order");
+    	cache.deleteOrder("order");
     	Order order = new Order
     			.OrderBuilder()
     			.id(form.getId())
     			.date(form.getDate())
     			.status(form.getStatus())
     			.build();
-        DAO.addOrderList(order,clientId);
+    	orderListDAO.addOrderList(order,clientId);
         return "redirect:/admin/orders";
     }
     
     //Update form
     @GetMapping("/{orderID}/{clientID}/editOrder")
     public String editOrder(Model model, @PathVariable("orderID") int id, @PathVariable("clientID") int idCli) {
-        model.addAttribute("order", DAO.getOrder(id));
-        Client client = DAO.getClient(idCli);
+        model.addAttribute("order", orderDAO.getOrder(id));
+        Client client = clientDAO.getClient(idCli);
         ClientForm form = new ClientForm();
         form.setId(client.getId());
         form.setName(client.getName());
@@ -82,7 +89,7 @@ public class ControllerAdmin {
         form.setPatronymic(client.getPatronymic());
         form.setPhoneNumber(client.getPhoneNumber());
         form.setEmail(client.getEmail());
-        DAO.save("lastCli", form);
+        cache.save("lastCli", form);
         return "admin/update";
     }
     //Update
@@ -91,33 +98,33 @@ public class ControllerAdmin {
         if (bindingResult.hasErrors())
             return "admin/update";
 
-        DAO.save("updOrder",order);
+        cache.save("updOrder",order);
         return "redirect:/admin/editOrderCli";
     }
     @GetMapping("/editOrderCli")
     public String editOrder(Model model) {
-    	model.addAttribute("clients", DAO.getAllClients());
-    	model.addAttribute("last", DAO.getLast("lastCli"));
-    	DAO.deleteClient("lastCli");
+    	model.addAttribute("clients", clientDAO.getAllClients());
+    	model.addAttribute("last", cache.getLast("lastCli"));
+    	cache.deleteClient("lastCli");
         return "admin/updateOrderCli";
     }
     @PostMapping("/orderUPDCli")
     public String updateOrder(@RequestParam("clientId") int clientId) {
-    	OrderForm form = DAO.get("updOrder");
-    	DAO.deleteOrder("updOrder");
+    	OrderForm form = cache.get("updOrder");
+    	cache.deleteOrder("updOrder");
     	Order order = new Order
     			.OrderBuilder()
     			.id(form.getId())
     			.date(form.getDate())
     			.status(form.getStatus())
     			.build();
-        DAO.updateOrderList(order, clientId);
+    	orderListDAO.updateOrderList(order, clientId);
         return "redirect:/admin/orders";
     }
     //Delete
     @PostMapping("/orderDEL/{orderID}/{clientID}")
     public String deleteOrder(@PathVariable("orderID") int orderID, @PathVariable("clientID") int clientID) {
-    	DAO.deleteOrderList(orderID, clientID);
+    	orderListDAO.deleteOrderList(orderID, clientID);
         return "redirect:/admin/orders";
     }
     
@@ -126,7 +133,7 @@ public class ControllerAdmin {
     //Read-all
     @GetMapping("/clients")
     public String clientsPage(Model model) {
-    	model.addAttribute("clientsList", DAO.getAllClients());
+    	model.addAttribute("clientsList", clientDAO.getAllClients());
         return "admin/clients";
     }
     //Create form
@@ -150,13 +157,13 @@ public class ControllerAdmin {
     			.email(form.getEmail())
     			.build();
     	
-        DAO.addClient(client);
+    	clientDAO.addClient(client);
         return "redirect:/admin/clients";
     }
     //Update form
     @GetMapping("/{id}/editClient")
     public String editClient(Model model, @PathVariable("id") int id) {
-        model.addAttribute("client", DAO.getClient(id));
+        model.addAttribute("client", clientDAO.getClient(id));
         return "admin/updateCli";
     }
     //Update
@@ -176,13 +183,13 @@ public class ControllerAdmin {
     			.email(form.getEmail())
     			.build();
         
-        DAO.updateClient(id, client);
+    	clientDAO.updateClient(id, client);
         return "redirect:/admin/clients";
     }
     //Delete
     @PostMapping("/clientDEL/{id}")
     public String deleteClient(@PathVariable("id") int id) {
-    	DAO.deleteClient(id);
+    	clientDAO.deleteClient(id);
         return "redirect:/admin/clients";
     }
     
