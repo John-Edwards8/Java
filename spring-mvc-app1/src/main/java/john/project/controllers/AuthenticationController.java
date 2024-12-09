@@ -43,15 +43,15 @@ public class AuthenticationController {
     @PostMapping("/login")
     public String authenticate(@RequestParam String username, @RequestParam String password,
     		@RequestParam(value = "check", required = false) boolean check,
-    		HttpSession session, HttpServletResponse response, Model model) {
+    		HttpSession session, Model model) {
     	
         if (username.equals("ADMIN") && password.equals("ADMIN")) {
             session.setAttribute("adminLoggedIn", true);
-			return check == true ? "redirect:/setadmincookie" : "redirect:/admin";
+			return check? "redirect:/setadmincookie" : "redirect:/admin";
         } else if (clientDAO.authenticate(username, password)) {
             session.setAttribute("userLoggedIn", true);
             session.setAttribute("current_client", clientDAO.getClient(username, password));
-			return check == true? "redirect:/setusercookie" : "redirect:/user";
+			return check? "redirect:/setusercookie" : "redirect:/user";
         } else {
 			model.addAttribute("error", "Invalid username or password");
 			return "start/login";
@@ -81,15 +81,18 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
-    public String register(@RequestParam String username, @RequestParam String password, Model model) {
+    public String register(@RequestParam String username, @RequestParam String password,
+    		@RequestParam(value = "check", required = false) boolean check,
+    		HttpSession session, Model model) {
         if (clientDAO.getClient(username, password) != null) {
             model.addAttribute("error", "Username already exists");
             return "start/register";
         }
         
         Client client = new Client.ClientBuilder().email(username).pass(password).build();
-
-        clientDAO.addClient(client);
-        return "redirect:/login";
+        clientDAO.registerClient(client);
+        session.setAttribute("userLoggedIn", true);
+        session.setAttribute("current_client", clientDAO.getClient(username, password));
+        return check? "redirect:/setusercookie" : "redirect:/user/";
     }
 }

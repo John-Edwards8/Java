@@ -12,4 +12,5 @@ public interface ClientDAO {
     Client getClient(int id);
     Client getClient(String username, String password);
 	boolean authenticate(String username, String password);
+	void registerClient(Client client);
 }

@@ -57,4 +57,9 @@ public class ClientDAOProxy implements ClientDAO {
 		return this.target.authenticate(username, password);
 	}
 
+	@Override
+	public void registerClient(Client client) {
+		this.target.registerClient(client);
+	}
+
 }

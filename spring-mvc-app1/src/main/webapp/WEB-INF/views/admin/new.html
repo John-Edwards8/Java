@@ -15,7 +15,7 @@
         
         <form th:action="@{/admin/order}" th:method="post" th:object="${order}">
             <div class="mb-3">
-                <label for="orderDate">Date:</label>
+                <label for="orderDate" class="form-label">Date:</label>
                 <input type="date" class="form-control" id="orderDate" th:field="${order.date}" required>
                 <div style="color:red" th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Date Error</div>
             </div>

@@ -4,7 +4,7 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 import jakarta.validation.constraints.*;
 
-public class OrderForm {
+public class OrderForm implements Cloneable {
     @NotEmpty(message = "Id should not be empty")
 	private int id;
 
@@ -14,7 +14,14 @@ public class OrderForm {
 
     @NotEmpty(message = "Status should not be empty")
     private String status;
+    
+    public OrderForm() {}
 
+    public OrderForm(OrderForm original) {
+        this.date = original.date;
+        this.status = original.status;
+    }
+    
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 

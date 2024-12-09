@@ -16,6 +16,7 @@ import john.project.models.Client;
 import john.project.models.ClientForm;
 import john.project.models.Order;
 import john.project.models.OrderForm;
+import john.project.models.OrderHistory;
 
 @Controller
 @RequestMapping("/admin")
@@ -23,13 +24,16 @@ public class ControllerAdmin {
     private final ClientDAO clientDAO;
     private final OrderDAO orderDAO;
     private final OrderListDAO orderListDAO;
-    private final CacheManager cache = new CacheManager();
+    private final OrderHistory orderHistory;
+    private final CacheManager cache = new CacheManager(); //TODO: Cache to Memento|History
 	
     public ControllerAdmin(@Qualifier("realClientDAO")ClientDAO clientDAO,
-    		OrderDAO orderDAO,@Qualifier("realOrderListDAO") OrderListDAO orderListDAO) {
+    		OrderDAO orderDAO,@Qualifier("realOrderListDAO") OrderListDAO orderListDAO,
+    		OrderHistory orderHistory) {
         this.clientDAO = clientDAO;
         this.orderDAO = orderDAO;
         this.orderListDAO = orderListDAO;
+        this.orderHistory = orderHistory;
     }
     
     @GetMapping("/")
@@ -48,31 +52,48 @@ public class ControllerAdmin {
     //Create form
     @GetMapping("/new")
     public String newOrder(@ModelAttribute("order") OrderForm order) {
+    	OrderForm previousOrder = orderHistory.restoreState();
+
+        if (previousOrder != null) {
+        	order.setDate(previousOrder.getDate());
+            order.setStatus(previousOrder.getStatus());
+        }
+        
         return "admin/new";
     }
     //Create
     @PostMapping("/order")
     public String addOrder(@ModelAttribute("order") OrderForm order, BindingResult res) {
-    	if (res.hasErrors())
-            return "admin/new";
-    	cache.save("order",order);
+    	if (res.hasErrors()) return "admin/new";
+    	
+    	orderHistory.saveState(order);
+    	
         return "redirect:/admin/addClient";
     }
+    
     @GetMapping("/addClient")
     public String addClient(Model model) {
     	model.addAttribute("clients", clientDAO.getAllClients());
         return "admin/addCli";
     }
+    
     @PostMapping("/orderlist")
-    public String addOrderList(@RequestParam("clientId") int clientId) {
-    	OrderForm form = cache.get("order");
-    	cache.deleteOrder("order");
+    public String addOrderList(@RequestParam("clientId") int clientId,
+    		@RequestParam("action") String action) {
+    	OrderForm form = orderHistory.restoreState();
+    	
+    	if ("cancel".equals(action)) {
+    		orderHistory.saveState(form);
+            return "redirect:/admin/new";
+        }
+    	
     	Order order = new Order
     			.OrderBuilder()
     			.id(form.getId())
     			.date(form.getDate())
     			.status(form.getStatus())
     			.build();
+    	
     	orderListDAO.addOrderList(order,clientId);
         return "redirect:/admin/orders";
     }

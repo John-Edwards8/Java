@@ -173,5 +173,9 @@ public class PostgreSQLClientDAO implements ClientDAO {
 
         return false;
     }
+	@Override
+	public void registerClient(Client client) {
+		this.addClient(client);
+	}
 
 }
