@@ -13,4 +13,7 @@ public interface ClientDAO {
     Client getClient(String username, String password);
 	boolean authenticate(String username, String password);
 	void registerClient(Client client);
+	void addObserver(Observer obs);
+	void removeObserver(Observer obs);
+	void notifyObservers(String eventType, Object entity);
 }

@@ -16,11 +16,30 @@ import john.project.models.Client;
 @Component
 public class PostgreSQLClientDAO implements ClientDAO {
 	private final Connection con;
-	
+	private List<Observer> observers = new ArrayList<>();
+
 	@Autowired
     public PostgreSQLClientDAO(Connection connection) {
         this.con = connection;
     }
+	
+	@Override
+    public void addObserver(Observer obs) {
+    	observers.add(obs);
+    }
+	
+	@Override
+    public void removeObserver(Observer obs) {
+    	observers.remove(obs);
+    }
+	
+	@Override
+	public void notifyObservers(String eventType, Object entity) {
+        for (Observer obs : observers) {
+        	obs.update(eventType, entity);
+        }
+    }
+	
 	@Override
     public void addClient(Client client) {
 		try {
@@ -31,8 +50,9 @@ public class PostgreSQLClientDAO implements ClientDAO {
 	    } catch (SQLException throwables) {
 	        throwables.printStackTrace();
 	    }
-    }
-
+		notifyObservers("CLIENT_ADDED", client);
+    }	
+	
     @Override
     public void updateClient(int id, Client client) {
     	try {
@@ -49,6 +69,7 @@ public class PostgreSQLClientDAO implements ClientDAO {
     	 } catch (SQLException throwables) {
              throwables.printStackTrace();
          }
+    	notifyObservers("CLIENT_UPDATED", client);
     }
 
     @Override
@@ -61,6 +82,7 @@ public class PostgreSQLClientDAO implements ClientDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    	notifyObservers("CLIENT_DELETED", id);
     }
 
     @Override

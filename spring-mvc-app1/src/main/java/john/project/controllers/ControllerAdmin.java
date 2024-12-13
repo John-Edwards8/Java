@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
@@ -154,8 +155,13 @@ public class ControllerAdmin {
      *CRUD-system */
     //Read-all
     @GetMapping("/clients")
-    public String clientsPage(Model model) {
+    public String clientsPage(Model model, @RequestParam(value = "message", required = false) String message) {
     	model.addAttribute("clientsList", clientDAO.getAllClients());
+    	
+    	if (message != null && !message.isEmpty()) {
+            model.addAttribute("message", message);
+        }
+    	
         return "admin/clients";
     }
     //Create form
@@ -165,7 +171,7 @@ public class ControllerAdmin {
     }
     //Create
     @PostMapping("/client")
-    public String addClient(@ModelAttribute("client") ClientForm form, BindingResult res) {
+    public String addClient(@ModelAttribute("client") ClientForm form, BindingResult res, RedirectAttributes redirectAttributes) {
     	if (res.hasErrors())
             return "admin/newClient";
     	
@@ -181,6 +187,7 @@ public class ControllerAdmin {
     			.build();
     	
     	clientDAO.addClient(client);
+    	redirectAttributes.addAttribute("message", "Client successfully added: " + client.getName());
         return "redirect:/admin/clients";
     }
     //Update form
@@ -192,7 +199,7 @@ public class ControllerAdmin {
     //Update
     @PostMapping("/clientUPD/{id}")
     public String updateClient(@ModelAttribute("client") @Valid ClientForm form, BindingResult bindingResult,
-                         @PathVariable("id") int id) {
+                         @PathVariable("id") int id, RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors())
             return "admin/updateCli";
         
@@ -208,12 +215,14 @@ public class ControllerAdmin {
     			.build();
         
     	clientDAO.updateClient(id, client);
+    	redirectAttributes.addAttribute("message", "Client successfully updated: " + client.getName());
         return "redirect:/admin/clients";
     }
     //Delete
     @PostMapping("/clientDEL/{id}")
-    public String deleteClient(@PathVariable("id") int id) {
+    public String deleteClient(@PathVariable("id") int id, RedirectAttributes redirectAttributes) {
     	clientDAO.deleteClient(id);
+    	redirectAttributes.addAttribute("message", "Client successfully deleted with ID: " + id);
         return "redirect:/admin/clients";
     }
     

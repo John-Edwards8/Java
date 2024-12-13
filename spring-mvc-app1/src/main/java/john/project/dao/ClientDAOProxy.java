@@ -62,4 +62,21 @@ public class ClientDAOProxy implements ClientDAO {
 		this.target.registerClient(client);
 	}
 
+	@Override
+	public void addObserver(Observer obs) {
+		this.target.addObserver(obs);
+		
+	}
+
+	@Override
+	public void removeObserver(Observer obs) {
+		this.target.removeObserver(obs);
+		
+	}
+
+	@Override
+	public void notifyObservers(String eventType, Object entity) {
+		this.target.notifyObservers(eventType, entity);
+	}
+
 }
