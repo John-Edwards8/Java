@@ -1,5 +1,7 @@
 .metadata
 Servers/
+auth-service/
+spring-mvc-app1/
 bin/
 tmp/
 *.tmp
