@@ -10,7 +10,21 @@ public class ClientResponseDto {
     private String pass;
     private Long roleId;
 
-    public Long getId() {
+    public ClientResponseDto(String name, String surname, String patronymic, String phoneNumber, String email,
+			String pass, long l) {
+    	this.name = name;
+    	this.surname = surname;
+    	this.patronymic = patronymic;
+    	this.phoneNumber = phoneNumber;
+    	this.email = email;
+    	this.pass = pass;
+    	this.roleId = l;
+
+    }
+
+	public ClientResponseDto() {}
+
+	public Long getId() {
         return id;
     }
 

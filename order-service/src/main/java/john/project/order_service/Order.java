@@ -20,6 +20,12 @@ public class Order {
     	this.orderDate = orderDate;
     	this.status = status;
 	}
+	public Order(Object l, Date date, String string) {
+		this.order_id = (Long)l;
+		this.orderDate = date;
+    	this.status = string;
+	}
+
 	public Long getOrderId() {
         return order_id;
     }

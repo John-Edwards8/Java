@@ -24,7 +24,19 @@ public class ClientCreateDto {
     
     private Long roleId;
 
-    // Getters and setters
+    public ClientCreateDto(String name, String surname, String patronymic, String phoneNumber, String email,
+			String pass, long l) {
+    	this.name = name;
+    	this.surname = surname;
+    	this.patronymic = patronymic;
+    	this.phoneNumber = phoneNumber;
+    	this.email = email;
+    	this.pass = pass;
+    	this.roleId = l;
+
+    }
+
+	// Getters and setters
     public String getName() {
         return name;
     }

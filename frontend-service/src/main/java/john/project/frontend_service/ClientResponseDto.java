@@ -16,6 +16,18 @@ public class ClientResponseDto {
     
     private Long role;
     
+	public ClientResponseDto(Object invalid, String name, String surname, String patronymic, String phoneNumber, String email,
+			String pass, long l) {
+		this.id = (Long) invalid;
+    	this.name = name;
+    	this.surname = surname;
+    	this.patronymic = patronymic;
+    	this.phoneNumber = phoneNumber;
+    	this.email = email;
+    	this.pass = pass;
+    	this.role = l;
+    }
+
 	public String getPass() {
 		return pass;
 	}
