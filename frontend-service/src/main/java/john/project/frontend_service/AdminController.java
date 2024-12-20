@@ -41,7 +41,11 @@ public class AdminController {
         
         List<ClientOrderResponseDto> result = new ArrayList<>();
         for (OrderResponseDto order : orders) {
-            ClientResponseDto client = clientServiceClient.getClientById(order.getClientId());
+        	Long id = order.getClientId();
+        	if(id == null) {
+        		continue;
+        	}
+            ClientResponseDto client = clientServiceClient.getClientById(id);
             ClientOrderResponseDto orderWithClient = new ClientOrderResponseDto(order, client);
             result.add(orderWithClient);
         }

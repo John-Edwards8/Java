@@ -18,6 +18,18 @@ public class OrderResponseDto {
 	}
 	public OrderResponseDto() {}
 	
+	public OrderResponseDto(Object object, Date date2, String string, Object object2) {
+		this.id = (Long) object;
+		this.orderDate = date2;
+        this.clientId = (Long) object2;
+        this.status = string;
+	}
+	public OrderResponseDto(Object object, Date date2, String string) {
+		this.id = (Long) object;
+		this.orderDate = date2;
+        this.status = string;
+	}
+	
 	public Long getId() {
 		return id;
 	}
